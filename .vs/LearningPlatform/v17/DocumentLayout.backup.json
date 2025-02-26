@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\Gil\\Projects\\LearningPlatform\\Migrations\\20250226224333_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Migrations\\20250226224333_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -42,24 +38,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "20250226224333_InitialMigration.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\Migrations\\20250226224333_InitialMigration.cs",
-              "RelativeDocumentMoniker": "Migrations\\20250226224333_InitialMigration.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\Migrations\\20250226224333_InitialMigration.cs",
-              "RelativeToolTip": "Migrations\\20250226224333_InitialMigration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T22:43:33.286Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -72,7 +55,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "AcademiaXContext.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\AcademiaXContext.cs",
               "RelativeDocumentMoniker": "3-Models\\AcademiaXContext.cs",
@@ -85,7 +68,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Progress.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Progress.cs",
               "RelativeDocumentMoniker": "3-Models\\Progress.cs",
@@ -98,7 +81,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "Enrollment.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Enrollment.cs",
               "RelativeDocumentMoniker": "3-Models\\Enrollment.cs",
@@ -111,7 +94,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "Lesson.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Lesson.cs",
               "RelativeDocumentMoniker": "3-Models\\Lesson.cs",
@@ -124,7 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Course.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Course.cs",
               "RelativeDocumentMoniker": "3-Models\\Course.cs",
@@ -137,7 +120,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "User.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
               "RelativeDocumentMoniker": "3-Models\\User.cs",
