@@ -1,27 +1,27 @@
-namespace LearningPlatform
+namespace Talent;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            var builder = WebApplication.CreateBuilder(args);
+        var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-
-            builder.Services.AddControllers();
-
-            var app = builder.Build();
-
-            // Configure the HTTP request pipeline.
-
-            app.UseHttpsRedirection();
-
-            app.UseAuthorization();
+        AppConfig.Configure(builder.Environment);
 
 
-            app.MapControllers();
 
-            app.Run();
-        }
+        builder.Services.AddControllers();
+
+        var app = builder.Build();
+
+
+        app.UseHttpsRedirection();
+
+        app.UseAuthorization();
+
+
+        app.MapControllers();
+
+        app.Run();
     }
 }
