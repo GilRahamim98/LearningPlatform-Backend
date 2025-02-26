@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Talent</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="3-Models\" />
+    <Folder Include="4-Services\" />
+    <Folder Include="5-Controllers\" />
+    <Folder Include="6-Middleware\" />
+    <Folder Include="2-Utils\" />
+    <Folder Include="1-Assets\" />
+  </ItemGroup>
+
+</Project>
