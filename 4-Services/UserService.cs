@@ -11,11 +11,13 @@ public class UserService :IDisposable
         _db = db;
     }
 
-    public void Register(User user)
+    public string Register(User user)
     {
         user.Email = user.Email.ToLower();
+        user.Password = PasswordHasher.HashPassword(user.Password);
         _db.Users.Add(user);
         _db.SaveChanges();
+        return JwtHelper.GetNewToken(user);
 
     }
 
