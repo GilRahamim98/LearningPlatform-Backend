@@ -1,3 +1,7 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
+
 namespace Talent;
 
 public class Program
@@ -8,8 +12,23 @@ public class Program
 
         AppConfig.Configure(builder.Environment);
 
+        if (builder.Environment.IsProduction())
+        {
+            using (AcademiaXContext db = new AcademiaXContext())
+            {
+                db.Database.EnsureCreated();
+            }
+        }
 
+        builder.Services.AddDbContext<AcademiaXContext>();
+        builder.Services.AddScoped<UserService>();
 
+        builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtHelper.SetBearerOptions);
+
+        builder.Services.AddControllers()
+            .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles)
+            .AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
         builder.Services.AddControllers();
 
         var app = builder.Build();
