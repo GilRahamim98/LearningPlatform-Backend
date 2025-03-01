@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Runtime.ConstrainedExecution;
+using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
-public class UserService :IDisposable
+public class UserService : IDisposable
 {
     private readonly AcademiaXContext _db;
 
@@ -23,8 +24,18 @@ public class UserService :IDisposable
 
     public bool EmailExists(string email)
     {
-        return _db.Users.AsNoTracking().Any(u=> u.Email == email);
+        return _db.Users.AsNoTracking().Any(u => u.Email == email);
     }
+
+    public string? Login(Credentials credentials)
+    {
+        credentials.Email = credentials.Email.ToLower();
+        credentials.Password = PasswordHasher.HashPassword(credentials.Password);
+        User? user = _db.Users.AsNoTracking().SingleOrDefault(u => u.Email == credentials.Email && u.Password == credentials.Password);
+        if (user == null) return null;
+        return JwtHelper.GetNewToken(user);
+    }
+
 
     public void Dispose()
     {

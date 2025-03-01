@@ -22,6 +22,10 @@ public class Program
 
         builder.Services.AddDbContext<AcademiaXContext>();
         builder.Services.AddScoped<UserService>();
+        builder.Services.AddScoped<CourseService>();
+        builder.Services.AddScoped<LessonService>();
+        builder.Services.AddScoped<EnrollmentService>();
+        builder.Services.AddScoped<ProgressService>();
 
         builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtHelper.SetBearerOptions);
