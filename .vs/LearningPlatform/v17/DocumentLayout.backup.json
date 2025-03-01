@@ -3,8 +3,44 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\5-controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\progressservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\enrollmentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\enrollment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\course.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\2-utils\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\passwordhasher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\2-utils\\extentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\extentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -19,14 +55,131 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CourseController.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\CourseController.cs",
-              "RelativeDocumentMoniker": "5-Controllers\\CourseController.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\CourseController.cs",
-              "RelativeToolTip": "5-Controllers\\CourseController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAAAFAAAAAAAAAA==",
+              "Title": "ProgressService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\ProgressService.cs",
+              "RelativeDocumentMoniker": "4-Services\\ProgressService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\ProgressService.cs",
+              "RelativeToolTip": "4-Services\\ProgressService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T17:00:53.517Z",
+              "WhenOpened": "2025-03-01T13:52:15.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EnrollmentService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\EnrollmentService.cs",
+              "RelativeDocumentMoniker": "4-Services\\EnrollmentService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\EnrollmentService.cs",
+              "RelativeToolTip": "4-Services\\EnrollmentService.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAAB0AAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T13:33:02.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
+              "RelativeDocumentMoniker": "4-Services\\UserService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
+              "RelativeToolTip": "4-Services\\UserService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T13:29:10.791Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "2-Utils\\JwtHelper.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
+              "RelativeToolTip": "2-Utils\\JwtHelper.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAwwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:13:52.522Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "PasswordHasher.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\PasswordHasher.cs",
+              "RelativeDocumentMoniker": "2-Utils\\PasswordHasher.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\PasswordHasher.cs",
+              "RelativeToolTip": "2-Utils\\PasswordHasher.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:13:51.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Extentions.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\Extentions.cs",
+              "RelativeDocumentMoniker": "2-Utils\\Extentions.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\Extentions.cs",
+              "RelativeToolTip": "2-Utils\\Extentions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:13:46.81Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AcademiaXContext.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\AcademiaXContext.cs",
+              "RelativeDocumentMoniker": "3-Models\\AcademiaXContext.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\AcademiaXContext.cs",
+              "RelativeToolTip": "3-Models\\AcademiaXContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:10:39.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Course.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Course.cs",
+              "RelativeDocumentMoniker": "3-Models\\Course.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Course.cs",
+              "RelativeToolTip": "3-Models\\Course.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:10:35.329Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Enrollment.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Enrollment.cs",
+              "RelativeDocumentMoniker": "3-Models\\Enrollment.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Enrollment.cs",
+              "RelativeToolTip": "3-Models\\Enrollment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:10:31.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Lesson.cs",
+              "RelativeDocumentMoniker": "3-Models\\Lesson.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Lesson.cs",
+              "RelativeToolTip": "3-Models\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-01T09:10:27.009Z",
               "EditorCaption": ""
             }
           ]
