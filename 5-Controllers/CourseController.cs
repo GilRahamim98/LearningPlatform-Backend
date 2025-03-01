@@ -48,7 +48,7 @@ public class CourseController : ControllerBase, IDisposable
 
 
     [HttpDelete("api/courses/{id}")]
-    public IActionResult DeleteProduct([FromRoute] Guid id)
+    public IActionResult DeleteCourse([FromRoute] Guid id)
     {
         bool deleted = _courseService.DeleteCourse(id);
         if (!deleted) return NotFound("Course with this id not found.");
