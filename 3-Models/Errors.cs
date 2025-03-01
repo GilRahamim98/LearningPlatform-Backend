@@ -16,7 +16,8 @@ public class RouteNotFoundError : BaseError
 
 public class ResourceNotFound : BaseError 
 {
-    public ResourceNotFound(int id) : base($"Id '{id}' not found") { }
+    public ResourceNotFound(Guid id) : base($"Id '{id}' not found") { }
+    public ResourceNotFound(string message) : base(message) { } 
 }
 
 public class ValidationError : BaseError 
