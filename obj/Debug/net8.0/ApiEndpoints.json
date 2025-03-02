@@ -18,8 +18,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "course",
-        "Type": "Talent.Course",
+        "Name": "createCourseDto",
+        "Type": "Talent.CreateCourseDto",
         "IsRequired": true
       }
     ],
@@ -55,8 +55,8 @@
         "IsRequired": true
       },
       {
-        "Name": "course",
-        "Type": "Talent.Course",
+        "Name": "createCourseDto",
+        "Type": "Talent.CreateCourseDto",
         "IsRequired": true
       }
     ],
@@ -87,8 +87,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "enrollmentCredentials",
-        "Type": "Talent.EnrollmentCredentials",
+        "Name": "createEnrollmentDto",
+        "Type": "Talent.CreateEnrollmentDto",
         "IsRequired": true
       }
     ],
@@ -103,8 +103,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "enrollmentCredentials",
-        "Type": "Talent.EnrollmentCredentials",
+        "Name": "createEnrollmentDto",
+        "Type": "Talent.CreateEnrollmentDto",
         "IsRequired": true
       }
     ],
@@ -161,8 +161,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "lesson",
-        "Type": "Talent.Lesson",
+        "Name": "createLessonDto",
+        "Type": "Talent.CreateLessonDto",
         "IsRequired": true
       }
     ],
@@ -198,8 +198,8 @@
         "IsRequired": true
       },
       {
-        "Name": "lesson",
-        "Type": "Talent.Lesson",
+        "Name": "createLessonDto",
+        "Type": "Talent.CreateLessonDto",
         "IsRequired": true
       }
     ],
@@ -222,16 +222,85 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Talent.UserController",
-    "Method": "Login",
-    "RelativePath": "api/login",
+    "ContainingType": "Talent.ProgressController",
+    "Method": "AddProgress",
+    "RelativePath": "api/progresses",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "credentials",
-        "Type": "Talent.Credentials",
+        "Name": "createProgressDto",
+        "Type": "Talent.CreateProgressDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.ProgressController",
+    "Method": "UpdateProgress",
+    "RelativePath": "api/progresses/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "createProgressDto",
+        "Type": "Talent.CreateProgressDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.ProgressController",
+    "Method": "GetProgressByLesson",
+    "RelativePath": "api/progresses/progress-by-lesson/{lessonId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "lessonId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.ProgressController",
+    "Method": "GetProgressByUser",
+    "RelativePath": "api/progresses/progress-by-user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
+    "Method": "Login",
+    "RelativePath": "api/users/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "loginDto",
+        "Type": "Talent.LoginDto",
         "IsRequired": true
       }
     ],
@@ -240,14 +309,14 @@
   {
     "ContainingType": "Talent.UserController",
     "Method": "Register",
-    "RelativePath": "api/register",
+    "RelativePath": "api/users/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
-        "Type": "Talent.User",
+        "Name": "createUserDto",
+        "Type": "Talent.CreateUserDto",
         "IsRequired": true
       }
     ],

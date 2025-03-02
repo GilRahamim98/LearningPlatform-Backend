@@ -14,45 +14,44 @@ public class CourseController : ControllerBase, IDisposable
         _courseService = courseService;
     }
 
-    [HttpGet()]
-    public IActionResult GetAllCourses()
+    [HttpGet]
+    public async Task<IActionResult> GetAllCourses()
     {
-        List<Course> courses = _courseService.GetAllCourses();
+        List<CourseDto> courses = await _courseService.GetAllCourses();
         return Ok(courses);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetCourseById([FromRoute] Guid id)
+    public async Task<IActionResult> GetCourseById([FromRoute] Guid id)
     {
-        Course? course = _courseService.GetCourseById(id);
+        CourseDto? course = await _courseService.GetCourseById(id);
         if (course == null) return NotFound(new ResourceNotFound(id));
         return Ok(course);
     }
 
-    [HttpPost()]
-    public IActionResult AddCourse([FromBody] Course course)
+    [HttpPost]
+    public async Task<IActionResult> AddCourse([FromBody] CreateCourseDto createCourseDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
 
-        Course dbCourse = _courseService.AddCourse(course);
+        CourseDto dbCourse = await _courseService.AddCourse(createCourseDto);
         return Created("api/courses/" + dbCourse.Id, dbCourse);
     }
 
     [HttpPut("{id}")]
-    public IActionResult UpdateCourse([FromRoute] Guid id, [FromBody] Course course)
+    public async Task<IActionResult> UpdateCourse([FromRoute] Guid id, [FromBody] CreateCourseDto createCourseDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        course.Id = id;
-        Course? dbCourse = _courseService.UpdateCourse(course);
-        if (dbCourse == null) return NotFound(new ResourceNotFound(id));
-        return Ok(dbCourse);
+        CourseDto? updatedCourse = await _courseService.UpdateCourse(id,createCourseDto);
+        if (updatedCourse == null) return NotFound(new ResourceNotFound(id));
+        return Ok(updatedCourse);
     }
 
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteCourse([FromRoute] Guid id)
+    public async Task<IActionResult> DeleteCourse([FromRoute] Guid id)
     {
-        bool deleted = _courseService.DeleteCourse(id);
+        bool deleted = await _courseService.DeleteCourse(id);
         if (!deleted) return NotFound(new ResourceNotFound(id));
         return NoContent();
     }

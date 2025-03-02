@@ -16,34 +16,34 @@ public class EnrollmentController : ControllerBase, IDisposable
     }
 
     [HttpPost]
-    public IActionResult EnrollUser([FromBody] EnrollmentCredentials enrollmentCredentials)
+    public async Task<IActionResult> EnrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
     {
-        bool alreadyEnrolled = _enrollmentService.IsUserEnrolled(enrollmentCredentials.UserId, enrollmentCredentials.CourseId);
+        bool alreadyEnrolled = await _enrollmentService.IsUserEnrolled(createEnrollmentDto.UserId, createEnrollmentDto.CourseId);
         if (alreadyEnrolled) return BadRequest(new ValidationError("User is already enrolled in this course."));
 
-        Enrollment newEnrollment = _enrollmentService.EnrollUserInCourse(enrollmentCredentials.UserId, enrollmentCredentials.CourseId);
+        EnrollmentDto newEnrollment = await _enrollmentService.EnrollUserInCourse(createEnrollmentDto);
         return Created("/api/enrollments", newEnrollment);
     }
 
     [HttpGet("enrollments-by-user/{userId}")]
-    public IActionResult GetUserEnrollments([FromRoute] Guid userId)
+    public async Task<IActionResult> GetUserEnrollments([FromRoute] Guid userId)
     {
-        List<Course> courses = _enrollmentService.GetUserEnrollments(userId);
+        List<CourseDto> courses = await _enrollmentService.GetUserEnrollments(userId);
         return Ok(courses);
     }
 
     [HttpGet("enrollments-by-course/{courseId}")]
-    public IActionResult GetCourseEnrollments([FromRoute] Guid courseId)
+    public async Task<IActionResult> GetCourseEnrollments([FromRoute] Guid courseId)
     {
-        List<User> users = _enrollmentService.GetCourseEnrollments(courseId);
+        List<UserDto> users = await _enrollmentService.GetCourseEnrollments(courseId);
         return Ok(users);
     }
 
     [HttpDelete]
-    public IActionResult UnenrollUser([FromBody] EnrollmentCredentials enrollmentCredentials)
+    public async Task<IActionResult> UnenrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
     {
-        bool deleted = _enrollmentService.UnenrollUserFromCourse(enrollmentCredentials.UserId,enrollmentCredentials.CourseId);
-        if (!deleted) return NotFound(new ResourceNotFound($"Enrollment not found for this user id : {enrollmentCredentials.UserId} and for this course id : {enrollmentCredentials.CourseId}"));
+        bool deleted = await _enrollmentService.UnenrollUserFromCourse(createEnrollmentDto);
+        if (!deleted) return NotFound(new ResourceNotFound($"Enrollment not found for this user id : {createEnrollmentDto.UserId} and for this course id : {createEnrollmentDto.CourseId}"));
         return NoContent();
     }
 

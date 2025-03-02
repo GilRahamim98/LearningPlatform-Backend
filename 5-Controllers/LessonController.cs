@@ -14,45 +14,45 @@ public class LessonController : ControllerBase, IDisposable
     }
 
 
-    [HttpGet()]
-    public IActionResult GetAllLessons()
+    [HttpGet]
+    public async Task<IActionResult> GetAllLessons()
     {
-        List<Lesson> lessons = _lessonService.GetAllLessons();
+        List<LessonDto> lessons = await _lessonService.GetAllLessons();
         return Ok(lessons);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetLessonById([FromRoute] Guid id)
+    public async Task<IActionResult> GetLessonById([FromRoute] Guid id)
     {
-        Lesson? lesson = _lessonService.GetLessonById(id);
+        LessonDto? lesson = await _lessonService.GetLessonById(id);
         if (lesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(lesson);
     }
 
-    [HttpPost()]
-    public IActionResult AddLesson([FromBody] Lesson lesson)
+    [HttpPost]
+    public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
 
-        Lesson dbLesson = _lessonService.AddLesson(lesson);
+        LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
         return Created("api/lessons/" + dbLesson.Id, dbLesson);
     }
 
     [HttpPut("{id}")]
-    public IActionResult UpdateLesson([FromRoute] Guid id, [FromBody] Lesson lesson)
+    public async Task<IActionResult> UpdateLesson([FromRoute] Guid id, [FromBody] CreateLessonDto createLessonDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        lesson.Id = id;
-        Lesson? dbLesson = _lessonService.UpdateLesson(lesson);
+
+        LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
         if (dbLesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(dbLesson);
     }
 
 
     [HttpDelete("{id}")]
-    public IActionResult DeleteLesson([FromRoute] Guid id)
+    public async Task<IActionResult> DeleteLesson([FromRoute] Guid id)
     {
-        bool deleted = _lessonService.DeleteLesson(id);
+        bool deleted = await _lessonService.DeleteLesson(id);
         if (!deleted) return NotFound(new ResourceNotFound(id));
         return NoContent();
     }
