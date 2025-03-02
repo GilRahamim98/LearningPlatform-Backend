@@ -173,3 +173,4 @@ E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\refint\LearningPlatform.dll
 E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\LearningPlatform.pdb
 E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\LearningPlatform.genruntimeconfig.cache
 E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\ref\LearningPlatform.dll
+E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

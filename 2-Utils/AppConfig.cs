@@ -4,7 +4,7 @@ public class AppConfig
 {
     public static bool IsProduction;
     public static string ConnectionString { get; private set; } = null!;
-    public static string JwtKey { get; private set; } = "pL5Vpu8DYG3NCZwy4q6RdEjTMvH7xF2bKskAnWgQ9JXZfU";
+    public static string JwtKey { get; private set; } = "pL5Vpu8DYG3NCZwy4q6RdEjTMvH7xF2bKskAnWgQ9JXZfUDasdopuxcPajkl489489dniONJKSADBUInbcNJSHIU";
     public static int JwtKeyExpire { get; private set; }
 
     public static void Configure(IWebHostEnvironment env)
