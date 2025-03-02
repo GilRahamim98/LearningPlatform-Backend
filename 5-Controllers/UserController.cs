@@ -2,6 +2,7 @@
 
 namespace Talent;
 
+[Route("api/users")]
 [ApiController]
 public class UserController : ControllerBase, IDisposable
 {
@@ -11,21 +12,21 @@ public class UserController : ControllerBase, IDisposable
         _userService = userService;
     }
 
-    [HttpPost("api/register")]
-    public IActionResult Register([FromBody]User user)
+    [HttpPost("register")]
+    public async Task<IActionResult> Register([FromBody]CreateUserDto createUserDto)
     {
         if (!ModelState.IsValid)
             return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        if (_userService.EmailExists(user.Email))
-            return BadRequest(new ValidationError($"Email {user.Email} is already exists."));
-        string token = _userService.Register(user);
+        if (await _userService.EmailExists(createUserDto.Email))
+            return BadRequest(new ValidationError($"Email {createUserDto.Email} is already exists."));
+        string token = await _userService.Register(createUserDto);
         return Created("", token);
     }
 
-    [HttpPost("api/login")]
-    public IActionResult Login([FromBody] Credentials credentials)
+    [HttpPost("login")]
+    public async Task<IActionResult> Login([FromBody] LoginDto loginDto)
     {
-        string? token = _userService.Login(credentials);
+        string? token = await _userService.Login(loginDto);
         if (token == null) return Unauthorized(new UnauthorizedError("Incorrect email or password"));
         return Ok(token);
     }

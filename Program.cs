@@ -26,6 +26,8 @@ public class Program
         builder.Services.AddScoped<LessonService>();
         builder.Services.AddScoped<EnrollmentService>();
         builder.Services.AddScoped<ProgressService>();
+        builder.Services.AddAutoMapper(typeof(Program));
+        
 
         builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtHelper.SetBearerOptions);

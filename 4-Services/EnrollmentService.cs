@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
@@ -6,49 +7,53 @@ namespace Talent;
 public class EnrollmentService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly IMapper _mapper;
 
-    public EnrollmentService(AcademiaXContext db)
+    public EnrollmentService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
+        _mapper = mapper;
     }
 
-    public Enrollment EnrollUserInCourse(Guid userId, Guid courseId)
+    public async Task<EnrollmentDto> EnrollUserInCourse(CreateEnrollmentDto createEnrollmentDto)
     {
         Enrollment enrollment = new Enrollment()
         {
-            UserId = userId,
-            CourseId = courseId,
-            EnrolledAt = DateTime.UtcNow
+            UserId = createEnrollmentDto.UserId,
+            CourseId = createEnrollmentDto.CourseId,
+            EnrolledAt = DateTime.Now
         };
         _db.Enrollments.Add(enrollment);
-        _db.SaveChanges();
-        return enrollment;
+        await _db.SaveChangesAsync();
+        return _mapper.Map<EnrollmentDto>(enrollment);
     }
 
-    public List<Course> GetUserEnrollments(Guid userId)
+    public async Task<List<CourseDto>> GetUserEnrollments(Guid userId)
     {
-        return _db.Enrollments.AsNoTracking().Where(e => e.UserId == userId).Select(e => e.Course).ToList();
+        List<Course> courses = await _db.Enrollments.AsNoTracking().Where(e => e.UserId == userId).Select(e => e.Course).ToListAsync();
+        return _mapper.Map<List<CourseDto>>(courses);
     }
 
-    public List<User> GetCourseEnrollments(Guid courseId)
+    public async Task<List<UserDto>> GetCourseEnrollments(Guid courseId)
     {
-        return _db.Enrollments.AsNoTracking().Where(e => e.CourseId == courseId).Select(e => e.User).ToList();
+        List<User> users = await _db.Enrollments.AsNoTracking().Where(e => e.CourseId == courseId).Select(e => e.User).ToListAsync();
+        return _mapper.Map<List<UserDto>>(users);
     }
 
-    public bool UnenrollUserFromCourse(Guid userId, Guid courseId)
+    public async Task<bool> UnenrollUserFromCourse(CreateEnrollmentDto createEnrollmentDto)
     {
-        Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.UserId == userId && e.CourseId == courseId);
+        Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.UserId == createEnrollmentDto.UserId && e.CourseId == createEnrollmentDto.CourseId);
 
         if (enrollment == null) return false;
         _db.Enrollments.Remove(enrollment);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return true;
     }
 
 
-    public bool IsUserEnrolled(Guid userId, Guid courseId)
+    public async Task<bool> IsUserEnrolled(Guid userId, Guid courseId)
     {
-        return _db.Enrollments.AsNoTracking().Any(e => e.UserId == userId && e.CourseId == courseId);
+        return await _db.Enrollments.AsNoTracking().AnyAsync(e => e.UserId == userId && e.CourseId == courseId);
     }
 
     public void Dispose()

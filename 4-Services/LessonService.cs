@@ -1,49 +1,54 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
 public class LessonService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly IMapper _mapper;
 
-    public LessonService(AcademiaXContext db)
+    public LessonService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
+        _mapper = mapper;
     }
 
-    public List<Lesson> GetAllLessons()
+    public async Task<List<LessonDto>> GetAllLessons()
     {
-        return _db.Lessons.AsNoTracking().ToList();
+        List<Lesson> lessons = await _db.Lessons.AsNoTracking().ToListAsync();
+        return _mapper.Map<List<LessonDto>>(lessons);
     }
 
-    public Lesson? GetLessonById(Guid id)
+    public async Task<LessonDto?> GetLessonById(Guid id)
     {
-        return _db.Lessons.AsNoTracking().SingleOrDefault(l => l.Id == id);
+        Lesson? lesson = await _db.Lessons.AsNoTracking().SingleOrDefaultAsync(l => l.Id == id);
+        return _mapper.Map<LessonDto?>(lesson);
     }
 
-    public Lesson AddLesson(Lesson lesson)
+    public async Task<LessonDto> AddLesson(CreateLessonDto createLessonDto)
     {
+        Lesson lesson = _mapper.Map<Lesson>(createLessonDto);
         _db.Lessons.Add(lesson);
-        _db.SaveChanges();
-        return lesson;
+        await _db.SaveChangesAsync();
+        return _mapper.Map<LessonDto>(lesson);
     }
 
-    public Lesson? UpdateLesson(Lesson lesson)
+    public async Task<LessonDto?> UpdateLesson(Guid id, CreateLessonDto createLessonDto)
     {
-        Lesson? dbLesson = GetLessonById(lesson.Id);
+        Lesson? dbLesson = await _db.Lessons.FindAsync(id);
         if (dbLesson == null) return null;
-        _db.Lessons.Attach(lesson);
-        _db.Entry(lesson).State = EntityState.Modified;
-        _db.SaveChanges();
-        return lesson;
+        _mapper.Map(createLessonDto, dbLesson);
+        await _db.SaveChangesAsync();
+        return _mapper.Map<LessonDto>(dbLesson);
     }
 
-    public bool DeleteLesson(Guid id)
+    public async Task<bool> DeleteLesson(Guid id)
     {
-        Lesson? dbLesson = GetLessonById(id);
+        Lesson? dbLesson = await _db.Lessons.FindAsync(id);
         if (dbLesson == null) return false;
         _db.Lessons.Remove(dbLesson);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return true;
     }
 

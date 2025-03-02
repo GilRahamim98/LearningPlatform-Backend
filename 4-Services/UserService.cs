@@ -1,4 +1,5 @@
 ﻿using System.Runtime.ConstrainedExecution;
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
@@ -6,36 +7,40 @@ namespace Talent;
 public class UserService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly IMapper _mapper;
 
-    public UserService(AcademiaXContext db)
+
+    public UserService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
+        _mapper = mapper;
+
     }
 
-    public string Register(User user)
+    public async Task<string> Register(CreateUserDto createUserDto)
     {
+        User user = _mapper.Map<User>(createUserDto);
         user.Email = user.Email.ToLower();
         user.Password = PasswordHasher.HashPassword(user.Password);
         _db.Users.Add(user);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return JwtHelper.GetNewToken(user);
 
     }
 
-    public bool EmailExists(string email)
+    public async Task<bool> EmailExists(string email)
     {
-        return _db.Users.AsNoTracking().Any(u => u.Email == email);
+        return await _db.Users.AsNoTracking().AnyAsync(u => u.Email == email.ToLower());
     }
 
-    public string? Login(Credentials credentials)
+    public async Task<string?> Login(LoginDto loginDto)
     {
-        credentials.Email = credentials.Email.ToLower();
-        credentials.Password = PasswordHasher.HashPassword(credentials.Password);
-        User? user = _db.Users.AsNoTracking().SingleOrDefault(u => u.Email == credentials.Email && u.Password == credentials.Password);
+        loginDto.Email = loginDto.Email.ToLower();
+        loginDto.Password = PasswordHasher.HashPassword(loginDto.Password);
+        User? user = await _db.Users.AsNoTracking().SingleOrDefaultAsync(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
         if (user == null) return null;
         return JwtHelper.GetNewToken(user);
     }
-
 
     public void Dispose()
     {

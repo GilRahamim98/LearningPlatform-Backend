@@ -23,5 +23,5 @@ public class Enrollment
 
 
     [Required(ErrorMessage = "Missing EnrolledAt")]
-    public DateTime EnrolledAt { get; set; } = DateTime.UtcNow;
+    public DateTime EnrolledAt { get; set; } = DateTime.Now;
 }

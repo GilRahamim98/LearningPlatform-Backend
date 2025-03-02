@@ -18,7 +18,7 @@ public class Course
     public string Description { get; set; } = null!;
 
     [Required(ErrorMessage = "Missing CreatedAt")]
-    public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    public DateTime CreatedAt { get; set; } = DateTime.Now;
 
 
 }

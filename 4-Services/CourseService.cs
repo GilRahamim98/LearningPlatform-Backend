@@ -1,50 +1,55 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
+using AutoMapper;
 
 namespace Talent;
 
 public class CourseService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly IMapper _mapper;
 
-    public CourseService(AcademiaXContext db)
+    public CourseService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
+        _mapper = mapper;
     }
 
-    public List<Course> GetAllCourses()
+    public async Task<List<CourseDto>> GetAllCourses()
     {
-        return _db.Courses.AsNoTracking().ToList();
+        List<Course> courses = await _db.Courses.AsNoTracking().ToListAsync();
+        return _mapper.Map<List<CourseDto>>(courses);
     }
 
-    public Course? GetCourseById(Guid id)
+    public async Task<CourseDto?> GetCourseById(Guid id)
     {
-        return _db.Courses.AsNoTracking().SingleOrDefault(c => c.Id == id);
+        Course? course = await _db.Courses.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
+        return _mapper.Map<CourseDto?>(course);
     }
 
-    public Course AddCourse(Course course)
+    public async Task<CourseDto> AddCourse(CreateCourseDto createCourseDto)
     {
+        Course course = _mapper.Map<Course>(createCourseDto);
         _db.Courses.Add(course);
-        _db.SaveChanges();
-        return course;
+        await _db.SaveChangesAsync();
+        return _mapper.Map<CourseDto>(course);
     }
 
-    public Course? UpdateCourse(Course course)
+    public async Task<CourseDto?> UpdateCourse(Guid id, CreateCourseDto createCourseDto)
     {
-        Course? dbCourse = GetCourseById(course.Id);
+        Course? dbCourse = await _db.Courses.FindAsync(id);
         if (dbCourse == null) return null;
-        _db.Courses.Attach(course);
-        _db.Entry(course).State = EntityState.Modified;
-        _db.SaveChanges();
-        return course;
+        _mapper.Map(createCourseDto, dbCourse);
+        await _db.SaveChangesAsync();
+        return _mapper.Map<CourseDto>(dbCourse);
     }
 
-    public bool DeleteCourse(Guid id)
+    public async Task<bool> DeleteCourse(Guid id)
     {
-        Course? dbCourse = GetCourseById(id);
+        Course? dbCourse = await _db.Courses.FindAsync(id);
         if (dbCourse == null) return false;
         _db.Courses.Remove(dbCourse);
-        _db.SaveChanges();
+        await _db.SaveChangesAsync();
         return true;
     }
 

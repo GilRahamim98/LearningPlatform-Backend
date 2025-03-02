@@ -1,48 +1,63 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
-public class ProgressService
+public class ProgressService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly IMapper _mapper;
 
-    public ProgressService(AcademiaXContext db)
+
+    public ProgressService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
+        _mapper = mapper;
     }
 
-    public List<Progress> GetProgressByUser(Guid userId)
+    public async Task<List<ProgressDto>> GetProgressByUser(Guid userId)
     {
-        return _db.Progresses.AsNoTracking().Where(p => p.UserId == userId).Include(p => p.Lesson).ToList();
+        List<Progress> progresses = await _db.Progresses.AsNoTracking().Where(p => p.UserId == userId).Include(p => p.Lesson).ToListAsync();
+        return _mapper.Map<List<ProgressDto>>(progresses);
     }
 
-    public List<Progress> GetProgressByLesson(Guid lessonId)
+    public async Task<List<ProgressDto>> GetProgressByLesson(Guid lessonId)
     {
-        return _db.Progresses.AsNoTracking().Where(p => p.LessonId == lessonId).Include(p => p.User).ToList();
+        List<Progress> progresses = await _db.Progresses.AsNoTracking().Where(p => p.LessonId == lessonId).Include(p => p.User).ToListAsync();
+        return _mapper.Map<List<ProgressDto>>(progresses);
+
     }
 
-    public Progress TrackLessonCompletion(Guid userId, Guid lessonId)
-    {
-        Progress? progress = _db.Progresses.AsNoTracking().SingleOrDefault(p => p.UserId == userId && p.LessonId == lessonId);
 
-        if(progress == null)
+    public async Task<ProgressDto> AddProgress(CreateProgressDto createProgressDto)
+    {
+        Progress progress = new Progress
         {
-            progress = new Progress
-            {
-                UserId = userId,
-                LessonId = lessonId,
-                WatchedAt = DateTime.UtcNow
-            };
-            _db.Progresses.Add(progress);
-        }
-        else
-        {
-            progress.WatchedAt = DateTime.UtcNow;
-            _db.Progresses.Update(progress);
-        }
-        _db.SaveChanges();
-        return progress;
+            UserId = createProgressDto.UserId,
+            LessonId = createProgressDto.LessonId,
+            WatchedAt = DateTime.Now
+        };
+        _db.Progresses.Add(progress);
+        await _db.SaveChangesAsync();
+        return _mapper.Map<ProgressDto>(progress);
+    }
 
+    public async Task<ProgressDto?> UpdateProgress(Guid id, CreateProgressDto createProgressDto)
+    {
+        Progress? dbProgress = await _db.Progresses.FindAsync(id);
+
+        if (dbProgress == null) return null;
+
+        _mapper.Map(createProgressDto, dbProgress);
+
+        await _db.SaveChangesAsync();
+        return _mapper.Map<ProgressDto>(dbProgress);
+
+    }
+
+    public void Dispose()
+    {
+        _db.Dispose();
     }
 }
 
