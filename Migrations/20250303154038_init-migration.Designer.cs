@@ -12,8 +12,8 @@ using Talent;
 namespace Talent.Migrations
 {
     [DbContext(typeof(AcademiaXContext))]
-    [Migration("20250226224333_InitialMigration")]
-    partial class InitialMigration
+    [Migration("20250303154038_init-migration")]
+    partial class initmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -122,6 +122,40 @@ namespace Talent.Migrations
                     b.ToTable("Progresses");
                 });
 
+            modelBuilder.Entity("Talent.Role", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("RoleId"));
+
+                    b.Property<string>("RoleName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("RoleId");
+
+                    b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            RoleId = 1,
+                            RoleName = "Student"
+                        },
+                        new
+                        {
+                            RoleId = 2,
+                            RoleName = "Instructor"
+                        },
+                        new
+                        {
+                            RoleId = 3,
+                            RoleName = "Admin"
+                        });
+                });
+
             modelBuilder.Entity("Talent.User", b =>
                 {
                     b.Property<Guid>("Id")
@@ -143,7 +177,12 @@ namespace Talent.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Users");
                 });
@@ -195,6 +234,22 @@ namespace Talent.Migrations
                     b.Navigation("Lesson");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Talent.User", b =>
+                {
+                    b.HasOne("Talent.Role", "Role")
+                        .WithMany("Users")
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("Talent.Role", b =>
+                {
+                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

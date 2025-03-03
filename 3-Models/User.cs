@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 namespace Talent;
 
 public class User
@@ -20,5 +21,12 @@ public class User
     [MinLength(6, ErrorMessage = "Password should be at least 6 chars.")]
     [MaxLength(250, ErrorMessage = "Password can't exceeds 250 chars.")]
     public string Password { get; set; } = null!;
+
+    [Required]
+    public int RoleId { get; set; }
+
+    [ForeignKey("RoleId")]
+    [InverseProperty("Users")]
+    public Role? Role { get; set; }
 
 }
