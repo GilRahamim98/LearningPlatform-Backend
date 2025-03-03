@@ -1,11 +1,16 @@
 ﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
-public class CreateUserValidator :AbstractValidator<CreateUserDto>
+public class RegisterValidator :AbstractValidator<RegisterUserDTO>, IDisposable
 {
-    public CreateUserValidator()
+    private readonly AcademiaXContext _db;
+
+    public RegisterValidator(AcademiaXContext db)
     {
+        _db = db;
+
         RuleFor(user => user.Name)
             .NotEmpty().WithMessage("Name is required.")
             .MinimumLength(2).WithMessage("Name should be at least 2 chars.")
@@ -13,7 +18,8 @@ public class CreateUserValidator :AbstractValidator<CreateUserDto>
 
         RuleFor(user => user.Email)
             .NotEmpty().WithMessage("Email is required.")
-            .EmailAddress().WithMessage("A valid email is required.")
+            .EmailAddress().WithMessage("Email should be vaild.")
+            .Must(EmailExists).WithMessage("Email already exists.")
             .MaximumLength(100).WithMessage("Email can't exceeds 100 chars.");
 
         RuleFor(user => user.Password)
@@ -27,5 +33,16 @@ public class CreateUserValidator :AbstractValidator<CreateUserDto>
         RuleFor(user => user.RoleId)
             .NotEmpty().WithMessage("RoleId is required.")
             .Must(role => role == 1 || role == 2).WithMessage("RoleId must be either 1 or 2");
+    }
+
+    private bool EmailExists(string email)
+    {
+        return !_db.Users.AsNoTracking().Any(u => u.Email == email.ToLower());
+    }
+
+
+    public void Dispose()
+    {
+        _db.Dispose();
     }
 }

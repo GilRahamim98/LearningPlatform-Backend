@@ -11,8 +11,7 @@ public class User
 
     public string Email { get; set; } = null!;
 
-    [Required(ErrorMessage = "Missing Password")]
-    [MaxLength(250, ErrorMessage = "Password can't exceeds 250 chars.")]
+  
     public string Password { get; set; } = null!;
 
     [Required]

@@ -17,14 +17,14 @@ public class CourseController : ControllerBase, IDisposable
     [HttpGet]
     public async Task<IActionResult> GetAllCourses()
     {
-        List<CourseDto> courses = await _courseService.GetAllCourses();
+        List<CourseDTO> courses = await _courseService.GetAllCourses();
         return Ok(courses);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCourseById([FromRoute] Guid id)
     {
-        CourseDto? course = await _courseService.GetCourseById(id);
+        CourseDTO? course = await _courseService.GetCourseById(id);
         if (course == null) return NotFound(new ResourceNotFound(id));
         return Ok(course);
     }
@@ -34,7 +34,7 @@ public class CourseController : ControllerBase, IDisposable
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
 
-        CourseDto dbCourse = await _courseService.AddCourse(createCourseDto);
+        CourseDTO dbCourse = await _courseService.AddCourse(createCourseDto);
         return Created("api/courses/" + dbCourse.Id, dbCourse);
     }
 
@@ -42,7 +42,7 @@ public class CourseController : ControllerBase, IDisposable
     public async Task<IActionResult> UpdateCourse([FromRoute] Guid id, [FromBody] CreateCourseDto createCourseDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        CourseDto? updatedCourse = await _courseService.UpdateCourse(id,createCourseDto);
+        CourseDTO? updatedCourse = await _courseService.UpdateCourse(id,createCourseDto);
         if (updatedCourse == null) return NotFound(new ResourceNotFound(id));
         return Ok(updatedCourse);
     }

@@ -28,6 +28,11 @@ public class Program
         builder.Services.AddScoped<LessonService>();
         builder.Services.AddScoped<EnrollmentService>();
         builder.Services.AddScoped<ProgressService>();
+        builder.Services.AddScoped<IValidator<RegisterUserDTO>,RegisterValidator>();
+        builder.Services.AddScoped<IValidator<LoginUserDto>,LoginValidator>();
+        builder.Services.AddScoped<IValidator<CreateCourseDto>,CourseValidator>();
+        builder.Services.AddScoped<IValidator<CreateLessonDto>,LessonValidator>();
+        builder.Services.AddScoped<IValidator<CreateEnrollmentDto>,EnrollmentValidator>();
         builder.Services.AddAutoMapper(typeof(Program));
         
 
@@ -37,7 +42,7 @@ public class Program
         builder.Services.AddControllers()
             .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles)
             .AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
-        builder.Services.AddControllers();
+        builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
         var app = builder.Build();
 

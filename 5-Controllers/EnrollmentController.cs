@@ -20,7 +20,7 @@ public class EnrollmentController : ControllerBase, IDisposable
     {
         bool alreadyEnrolled = await _enrollmentService.IsUserEnrolled(createEnrollmentDto.UserId, createEnrollmentDto.CourseId);
         if (alreadyEnrolled) return BadRequest(new ValidationError("User is already enrolled in this course."));
-
+        if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
         EnrollmentDto newEnrollment = await _enrollmentService.EnrollUserInCourse(createEnrollmentDto);
         return Created("/api/enrollments", newEnrollment);
     }
@@ -28,14 +28,14 @@ public class EnrollmentController : ControllerBase, IDisposable
     [HttpGet("enrollments-by-user/{userId}")]
     public async Task<IActionResult> GetUserEnrollments([FromRoute] Guid userId)
     {
-        List<CourseDto> courses = await _enrollmentService.GetUserEnrollments(userId);
+        List<CourseDTO> courses = await _enrollmentService.GetUserEnrollments(userId);
         return Ok(courses);
     }
 
     [HttpGet("enrollments-by-course/{courseId}")]
     public async Task<IActionResult> GetCourseEnrollments([FromRoute] Guid courseId)
     {
-        List<UserDto> users = await _enrollmentService.GetCourseEnrollments(courseId);
+        List<UserDTO> users = await _enrollmentService.GetCourseEnrollments(courseId);
         return Ok(users);
     }
 

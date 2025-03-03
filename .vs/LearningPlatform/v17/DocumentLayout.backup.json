@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\validators\\createuservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:validators\\createuservalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\validators\\lessonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:validators\\lessonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +43,92 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "CreateUserValidator.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\Validators\\CreateUserValidator.cs",
-              "RelativeDocumentMoniker": "Validators\\CreateUserValidator.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\Validators\\CreateUserValidator.cs",
-              "RelativeToolTip": "Validators\\CreateUserValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAABUAAAAAAAAAA==",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "5-Controllers\\UserController.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\UserController.cs",
+              "RelativeToolTip": "5-Controllers\\UserController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAAACIAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T17:58:47.9Z",
+              "WhenOpened": "2025-03-03T21:56:30.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACQAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T21:29:05.985Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CourseService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\CourseService.cs",
+              "RelativeDocumentMoniker": "4-Services\\CourseService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\CourseService.cs",
+              "RelativeToolTip": "4-Services\\CourseService.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAlwBYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T21:26:49.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Lesson.cs",
+              "RelativeDocumentMoniker": "3-Models\\Lesson.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Lesson.cs",
+              "RelativeToolTip": "3-Models\\Lesson.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T21:19:17.545Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LessonValidator.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\Validators\\LessonValidator.cs",
+              "RelativeDocumentMoniker": "Validators\\LessonValidator.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\Validators\\LessonValidator.cs",
+              "RelativeToolTip": "Validators\\LessonValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T21:18:25.61Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeDocumentMoniker": "3-Models\\User.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeToolTip": "3-Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAkAAAAAAAAAA==",
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\Mappings\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "Mappings\\MappingProfile.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\Mappings\\MappingProfile.cs",
+              "RelativeToolTip": "Mappings\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T18:02:37.521Z",
+              "WhenOpened": "2025-03-03T21:31:16.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UserService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
+              "RelativeDocumentMoniker": "4-Services\\UserService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
+              "RelativeToolTip": "4-Services\\UserService.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-03T22:04:24.409Z",
               "EditorCaption": ""
             }
           ]
