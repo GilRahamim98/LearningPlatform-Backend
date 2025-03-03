@@ -4,6 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
+public enum RoleType
+{
+    Member = 1,
+    Instructor = 2,
+    Admin = 3
+}
+
 public class UserService : IDisposable
 {
     private readonly AcademiaXContext _db;
