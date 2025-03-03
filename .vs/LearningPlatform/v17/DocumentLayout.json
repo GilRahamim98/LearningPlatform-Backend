@@ -3,16 +3,8 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\academiaxcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\role.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +19,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AcademiaXContext.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\AcademiaXContext.cs",
-              "RelativeDocumentMoniker": "3-Models\\AcademiaXContext.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\AcademiaXContext.cs",
-              "RelativeToolTip": "3-Models\\AcademiaXContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAFAAAAAAAAAA==",
+              "Title": "JwtHelper.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
+              "RelativeDocumentMoniker": "2-Utils\\JwtHelper.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
+              "RelativeToolTip": "2-Utils\\JwtHelper.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABsAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:37:05.069Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeDocumentMoniker": "3-Models\\User.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeToolTip": "3-Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:36:47.052Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Role.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Role.cs",
-              "RelativeDocumentMoniker": "3-Models\\Role.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Role.cs",
-              "RelativeToolTip": "3-Models\\Role.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABPAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:36:33.003Z",
+              "WhenOpened": "2025-03-03T15:58:13.682Z",
               "EditorCaption": ""
             }
           ]
