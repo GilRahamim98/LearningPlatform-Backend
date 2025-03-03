@@ -15,33 +15,33 @@ public class CourseService : IDisposable
         _mapper = mapper;
     }
 
-    public async Task<List<CourseDto>> GetAllCourses()
+    public async Task<List<CourseDTO>> GetAllCourses()
     {
         List<Course> courses = await _db.Courses.AsNoTracking().ToListAsync();
-        return _mapper.Map<List<CourseDto>>(courses);
+        return _mapper.Map<List<CourseDTO>>(courses);
     }
 
-    public async Task<CourseDto?> GetCourseById(Guid id)
+    public async Task<CourseDTO?> GetCourseById(Guid id)
     {
         Course? course = await _db.Courses.AsNoTracking().SingleOrDefaultAsync(c => c.Id == id);
-        return _mapper.Map<CourseDto?>(course);
+        return _mapper.Map<CourseDTO?>(course);
     }
 
-    public async Task<CourseDto> AddCourse(CreateCourseDto createCourseDto)
+    public async Task<CourseDTO> AddCourse(CreateCourseDto createCourseDto)
     {
         Course course = _mapper.Map<Course>(createCourseDto);
         _db.Courses.Add(course);
         await _db.SaveChangesAsync();
-        return _mapper.Map<CourseDto>(course);
+        return _mapper.Map<CourseDTO>(course);
     }
 
-    public async Task<CourseDto?> UpdateCourse(Guid id, CreateCourseDto createCourseDto)
+    public async Task<CourseDTO?> UpdateCourse(Guid id, CreateCourseDto createCourseDto)
     {
         Course? dbCourse = await _db.Courses.FindAsync(id);
         if (dbCourse == null) return null;
         _mapper.Map(createCourseDto, dbCourse);
         await _db.SaveChangesAsync();
-        return _mapper.Map<CourseDto>(dbCourse);
+        return _mapper.Map<CourseDTO>(dbCourse);
     }
 
     public async Task<bool> DeleteCourse(Guid id)

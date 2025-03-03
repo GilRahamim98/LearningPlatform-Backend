@@ -176,3 +176,7 @@ E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\ref\LearningPlatform.dll
 E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\AutoMapper.dll
 E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\FluentValidation.dll
+E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+E:\Gil\Projects\LearningPlatform\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\Gil\Projects\LearningPlatform\obj\Debug\net8.0\LearningPlatform.MvcApplicationPartsAssemblyInfo.cs

@@ -14,33 +14,33 @@ public class LessonService : IDisposable
         _mapper = mapper;
     }
 
-    public async Task<List<LessonDto>> GetAllLessons()
+    public async Task<List<LessonDTO>> GetAllLessons()
     {
         List<Lesson> lessons = await _db.Lessons.AsNoTracking().ToListAsync();
-        return _mapper.Map<List<LessonDto>>(lessons);
+        return _mapper.Map<List<LessonDTO>>(lessons);
     }
 
-    public async Task<LessonDto?> GetLessonById(Guid id)
+    public async Task<LessonDTO?> GetLessonById(Guid id)
     {
         Lesson? lesson = await _db.Lessons.AsNoTracking().SingleOrDefaultAsync(l => l.Id == id);
-        return _mapper.Map<LessonDto?>(lesson);
+        return _mapper.Map<LessonDTO?>(lesson);
     }
 
-    public async Task<LessonDto> AddLesson(CreateLessonDto createLessonDto)
+    public async Task<LessonDTO> AddLesson(CreateLessonDto createLessonDto)
     {
         Lesson lesson = _mapper.Map<Lesson>(createLessonDto);
         _db.Lessons.Add(lesson);
         await _db.SaveChangesAsync();
-        return _mapper.Map<LessonDto>(lesson);
+        return _mapper.Map<LessonDTO>(lesson);
     }
 
-    public async Task<LessonDto?> UpdateLesson(Guid id, CreateLessonDto createLessonDto)
+    public async Task<LessonDTO?> UpdateLesson(Guid id, CreateLessonDto createLessonDto)
     {
         Lesson? dbLesson = await _db.Lessons.FindAsync(id);
         if (dbLesson == null) return null;
         _mapper.Map(createLessonDto, dbLesson);
         await _db.SaveChangesAsync();
-        return _mapper.Map<LessonDto>(dbLesson);
+        return _mapper.Map<LessonDTO>(dbLesson);
     }
 
     public async Task<bool> DeleteLesson(Guid id)

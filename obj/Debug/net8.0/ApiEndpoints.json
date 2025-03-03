@@ -300,7 +300,7 @@
     "Parameters": [
       {
         "Name": "loginDto",
-        "Type": "Talent.LoginDto",
+        "Type": "Talent.LoginUserDto",
         "IsRequired": true
       }
     ],
@@ -316,7 +316,7 @@
     "Parameters": [
       {
         "Name": "createUserDto",
-        "Type": "Talent.CreateUserDto",
+        "Type": "Talent.RegisterUserDTO",
         "IsRequired": true
       }
     ],

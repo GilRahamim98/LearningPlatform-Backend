@@ -6,15 +6,15 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         // Mapping between Course and CourseDto
-        CreateMap<Course, CourseDto>();
+        CreateMap<Course, CourseDTO>();
         CreateMap<CreateCourseDto, Course>();
 
         // Mapping between User and UserDto
-        CreateMap<User, UserDto>();
-        CreateMap<CreateUserDto, User>();
+        CreateMap<User, UserDTO>();
+        CreateMap<RegisterUserDTO, User>();
 
         // Mapping between Lesson and LessonDto
-        CreateMap<Lesson, LessonDto>();
+        CreateMap<Lesson, LessonDTO>();
         CreateMap<CreateLessonDto, Lesson>();
 
         // Mapping between Enrollment and EnrollmentDto

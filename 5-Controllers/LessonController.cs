@@ -17,14 +17,14 @@ public class LessonController : ControllerBase, IDisposable
     [HttpGet]
     public async Task<IActionResult> GetAllLessons()
     {
-        List<LessonDto> lessons = await _lessonService.GetAllLessons();
+        List<LessonDTO> lessons = await _lessonService.GetAllLessons();
         return Ok(lessons);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetLessonById([FromRoute] Guid id)
     {
-        LessonDto? lesson = await _lessonService.GetLessonById(id);
+        LessonDTO? lesson = await _lessonService.GetLessonById(id);
         if (lesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(lesson);
     }
@@ -33,8 +33,7 @@ public class LessonController : ControllerBase, IDisposable
     public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-
-        LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
+        LessonDTO dbLesson = await _lessonService.AddLesson(createLessonDto);
         return Created("api/lessons/" + dbLesson.Id, dbLesson);
     }
 
@@ -43,7 +42,7 @@ public class LessonController : ControllerBase, IDisposable
     {
         if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
 
-        LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
+        LessonDTO? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
         if (dbLesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(dbLesson);
     }
