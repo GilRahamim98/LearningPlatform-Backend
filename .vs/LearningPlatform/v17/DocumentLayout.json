@@ -7,16 +7,8 @@
       "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:dtos\\userdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\jwthelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\roletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\roletype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,32 +18,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserDto.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\DTOs\\UserDto.cs",
-              "RelativeDocumentMoniker": "DTOs\\UserDto.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\DTOs\\UserDto.cs",
-              "RelativeToolTip": "DTOs\\UserDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T16:57:06.548Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeDocumentMoniker": "3-Models\\User.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\User.cs",
-              "RelativeToolTip": "3-Models\\User.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAABAAAAAAAAAA==",
+              "Title": "RoleType.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\RoleType.cs",
+              "RelativeDocumentMoniker": "3-Models\\RoleType.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\RoleType.cs",
+              "RelativeToolTip": "3-Models\\RoleType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T16:30:21.317Z",
+              "WhenOpened": "2025-03-03T17:26:08.77Z",
               "EditorCaption": ""
             },
             {
@@ -62,22 +41,9 @@
               "RelativeDocumentMoniker": "4-Services\\UserService.cs",
               "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
               "RelativeToolTip": "4-Services\\UserService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAAADEAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADUAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-03T16:30:19.138Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JwtHelper.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
-              "RelativeDocumentMoniker": "2-Utils\\JwtHelper.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\2-Utils\\JwtHelper.cs",
-              "RelativeToolTip": "2-Utils\\JwtHelper.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAABnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-03T15:58:13.682Z",
               "EditorCaption": ""
             }
           ]

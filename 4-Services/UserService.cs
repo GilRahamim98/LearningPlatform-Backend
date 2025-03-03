@@ -4,13 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
 
-public enum RoleType
-{
-    Member = 1,
-    Instructor = 2,
-    Admin = 3
-}
-
 public class UserService : IDisposable
 {
     private readonly AcademiaXContext _db;
@@ -48,6 +41,12 @@ public class UserService : IDisposable
         if (user == null) return null;
         return JwtHelper.GetNewToken(user);
     }
+
+    public bool IsStudentOrInstructor(int roleId)
+    {
+        return roleId == (int)RoleType.Student || roleId == (int)RoleType.Instructor;
+    }
+    
 
     public void Dispose()
     {
