@@ -14,11 +14,12 @@ public static class JwtHelper
 
     public static string GetNewToken(User user)
     {
-        var slimUser = new { user.Id, user.Name, user.Email };
+        var slimUser = new { user.Id, user.Name, user.Email, user.RoleId, Role = user.Role?.RoleName };
         string json = JsonSerializer.Serialize(slimUser, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
         List<Claim> claims = new List<Claim> {
             new Claim(ClaimTypes.Actor, json),
+            new Claim(ClaimTypes.Role, user.Role?.RoleName)
         };
 
         SecurityTokenDescriptor descriptor = new SecurityTokenDescriptor
