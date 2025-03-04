@@ -14,10 +14,9 @@ public class UserService : IDisposable
     {
         _db = db;
         _mapper = mapper;
-
     }
 
-    public async Task<string> Register(RegisterUserDTO createUserDto)
+    public async Task<string> Register(RegisterUserDto createUserDto)
     {
         User user = _mapper.Map<User>(createUserDto);
         user.Email = user.Email.ToLower();
@@ -26,7 +25,6 @@ public class UserService : IDisposable
         await _db.SaveChangesAsync();
         user.Role = await _db.Roles.SingleAsync(r => r.RoleId == user.RoleId);
         return JwtHelper.GetNewToken(user);
-
     }
 
     public async Task<string?> Login(LoginUserDto loginDto)
@@ -42,7 +40,18 @@ public class UserService : IDisposable
     {
         return roleId == (int)RoleType.Student || roleId == (int)RoleType.Instructor;
     }
-    
+
+    public async Task<bool> UserExists(Guid id)
+    {
+        return await _db.Users.AsNoTracking().AnyAsync(u => u.Id == id);
+    }
+
+    public async Task<bool> EmailExists(string email)
+    {
+        return await _db.Users.AsNoTracking().AnyAsync(u => u.Email == email);
+    }
+
+
 
 
 

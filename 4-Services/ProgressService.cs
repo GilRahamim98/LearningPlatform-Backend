@@ -6,12 +6,14 @@ namespace Talent;
 public class ProgressService : IDisposable
 {
     private readonly AcademiaXContext _db;
+    private readonly EnrollmentService _enrollmentService;
     private readonly IMapper _mapper;
 
 
-    public ProgressService(AcademiaXContext db, IMapper mapper)
+    public ProgressService(AcademiaXContext db,EnrollmentService enrollmentService, IMapper mapper)
     {
         _db = db;
+        _enrollmentService = enrollmentService;
         _mapper = mapper;
     }
 
@@ -55,9 +57,17 @@ public class ProgressService : IDisposable
 
     }
 
+    public async Task<bool> IsUserEnrolled(CreateProgressDto createProgressDto)
+    {
+        Lesson? lesson = await _db.Lessons.FindAsync(createProgressDto.LessonId);
+        if (lesson == null) return false;
+        return await _enrollmentService.IsUserEnrolled(createProgressDto.UserId, lesson.CourseId);  
+    } 
+
     public void Dispose()
     {
         _db.Dispose();
+        _enrollmentService.Dispose();
     }
 }
 

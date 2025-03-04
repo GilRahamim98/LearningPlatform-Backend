@@ -79,63 +79,15 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Talent.EnrollmentController",
-    "Method": "EnrollUser",
-    "RelativePath": "api/enrollments",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createEnrollmentDto",
-        "Type": "Talent.CreateEnrollmentDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.EnrollmentController",
-    "Method": "UnenrollUser",
-    "RelativePath": "api/enrollments",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createEnrollmentDto",
-        "Type": "Talent.CreateEnrollmentDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.EnrollmentController",
+    "ContainingType": "Talent.CourseController",
     "Method": "GetCourseEnrollments",
-    "RelativePath": "api/enrollments/enrollments-by-course/{courseId}",
+    "RelativePath": "api/courses/enrollments-by-course/{courseId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "courseId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.EnrollmentController",
-    "Method": "GetUserEnrollments",
-    "RelativePath": "api/enrollments/enrollments-by-user/{userId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
         "Type": "System.Guid",
         "IsRequired": true
       }
@@ -222,46 +174,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Talent.ProgressController",
-    "Method": "AddProgress",
-    "RelativePath": "api/progresses",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createProgressDto",
-        "Type": "Talent.CreateProgressDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.ProgressController",
-    "Method": "UpdateProgress",
-    "RelativePath": "api/progresses/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "createProgressDto",
-        "Type": "Talent.CreateProgressDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.ProgressController",
+    "ContainingType": "Talent.LessonController",
     "Method": "GetProgressByLesson",
-    "RelativePath": "api/progresses/progress-by-lesson/{lessonId}",
+    "RelativePath": "api/Lessons/progress-by-lesson/{lessonId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -275,9 +190,25 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Talent.ProgressController",
-    "Method": "GetProgressByUser",
-    "RelativePath": "api/progresses/progress-by-user/{userId}",
+    "ContainingType": "Talent.UserController",
+    "Method": "EnrollUser",
+    "RelativePath": "api/users/enroll-to-course",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createEnrollmentDto",
+        "Type": "Talent.CreateEnrollmentDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
+    "Method": "GetUserEnrollments",
+    "RelativePath": "api/users/enrollments/{userId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -308,6 +239,59 @@
   },
   {
     "ContainingType": "Talent.UserController",
+    "Method": "GetProgressByUser",
+    "RelativePath": "api/users/progress-by-user/{userId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
+    "Method": "AddProgress",
+    "RelativePath": "api/users/progresses",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createProgressDto",
+        "Type": "Talent.CreateProgressDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
+    "Method": "UpdateProgress",
+    "RelativePath": "api/users/progresses/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Guid",
+        "IsRequired": true
+      },
+      {
+        "Name": "createProgressDto",
+        "Type": "Talent.CreateProgressDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
     "Method": "Register",
     "RelativePath": "api/users/register",
     "HttpMethod": "POST",
@@ -316,7 +300,23 @@
     "Parameters": [
       {
         "Name": "createUserDto",
-        "Type": "Talent.RegisterUserDTO",
+        "Type": "Talent.RegisterUserDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.UserController",
+    "Method": "UnenrollUser",
+    "RelativePath": "api/users/unenroll",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "createEnrollmentDto",
+        "Type": "Talent.CreateEnrollmentDto",
         "IsRequired": true
       }
     ],

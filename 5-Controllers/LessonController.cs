@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using FluentValidation;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Talent;
@@ -8,23 +9,39 @@ namespace Talent;
 public class LessonController : ControllerBase, IDisposable
 {
     private readonly LessonService _lessonService;
-    public LessonController(LessonService lessonService)
+    private readonly ProgressService _progressService;
+    private readonly CourseService _courseService;
+
+    private IValidator<CreateLessonDto> _lessonValidator;
+    private IValidator<CreateProgressDto> _progressValidator;
+
+    public LessonController(
+        LessonService lessonService,
+        ProgressService progressService,
+        CourseService courseService,
+        EnrollmentService enrollmentService,
+        IValidator<CreateLessonDto> lessonValidator,
+        IValidator<CreateProgressDto> progressValidator)
     {
         _lessonService = lessonService;
+        _progressService = progressService;
+        _courseService = courseService;
+        _lessonValidator = lessonValidator;
+        _progressValidator = progressValidator;
     }
 
 
     [HttpGet]
     public async Task<IActionResult> GetAllLessons()
     {
-        List<LessonDTO> lessons = await _lessonService.GetAllLessons();
+        List<LessonDto> lessons = await _lessonService.GetAllLessons();
         return Ok(lessons);
     }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetLessonById([FromRoute] Guid id)
     {
-        LessonDTO? lesson = await _lessonService.GetLessonById(id);
+        LessonDto? lesson = await _lessonService.GetLessonById(id);
         if (lesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(lesson);
     }
@@ -32,21 +49,25 @@ public class LessonController : ControllerBase, IDisposable
     [HttpPost]
     public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
     {
-        if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        LessonDTO dbLesson = await _lessonService.AddLesson(createLessonDto);
+        if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
+        ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
+        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+
+        LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
         return Created("api/lessons/" + dbLesson.Id, dbLesson);
     }
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateLesson([FromRoute] Guid id, [FromBody] CreateLessonDto createLessonDto)
     {
-        if (!ModelState.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+        if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
+        ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
+        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
 
-        LessonDTO? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
+        LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
         if (dbLesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(dbLesson);
     }
-
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteLesson([FromRoute] Guid id)
@@ -56,8 +77,17 @@ public class LessonController : ControllerBase, IDisposable
         return NoContent();
     }
 
+    [HttpGet("progress-by-lesson/{lessonId}")]
+    public async Task<IActionResult> GetProgressByLesson([FromRoute] Guid lessonId)
+    {
+        List<ProgressDto> progresses = await _progressService.GetProgressByLesson(lessonId);
+        return Ok(progresses);
+    }
+
     public void Dispose()
     {
         _lessonService.Dispose();
+        _progressService.Dispose();
+        _courseService.Dispose();
     }
 }

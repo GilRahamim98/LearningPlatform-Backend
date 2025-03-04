@@ -4,7 +4,6 @@ namespace Talent;
 
 public class CourseValidator : AbstractValidator<CreateCourseDto>
 {
-
     public CourseValidator()
     {
         RuleFor(course => course.Title)
@@ -16,8 +15,5 @@ public class CourseValidator : AbstractValidator<CreateCourseDto>
            .NotEmpty().WithMessage("Description is required.")
            .MinimumLength(2).WithMessage("Description should be at least 2 chars.")
            .MaximumLength(1000).WithMessage("Description can't exceeds 250 chars.");
-
     }
-
- 
 }

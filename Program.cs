@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 using FluentValidation;
 using FluentValidation.AspNetCore;
+using Serilog;
+
 
 namespace Talent;
 
@@ -11,6 +13,13 @@ public class Program
     public static void Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        Log.Logger = new LoggerConfiguration()
+                        .WriteTo.Console() 
+                        .WriteTo.File("logs/log-.txt", rollingInterval: RollingInterval.Day) 
+                        .Enrich.FromLogContext()
+                        .MinimumLevel.Information() 
+                        .CreateLogger();
 
         AppConfig.Configure(builder.Environment);
 
@@ -28,13 +37,16 @@ public class Program
         builder.Services.AddScoped<LessonService>();
         builder.Services.AddScoped<EnrollmentService>();
         builder.Services.AddScoped<ProgressService>();
-        builder.Services.AddScoped<IValidator<RegisterUserDTO>,RegisterValidator>();
+        builder.Services.AddScoped<IValidator<RegisterUserDto>,RegisterValidator>();
         builder.Services.AddScoped<IValidator<LoginUserDto>,LoginValidator>();
         builder.Services.AddScoped<IValidator<CreateCourseDto>,CourseValidator>();
         builder.Services.AddScoped<IValidator<CreateLessonDto>,LessonValidator>();
         builder.Services.AddScoped<IValidator<CreateEnrollmentDto>,EnrollmentValidator>();
+        builder.Services.AddScoped<IValidator<CreateProgressDto>,ProgressValidator>();
         builder.Services.AddAutoMapper(typeof(Program));
         
+        builder.Host.UseSerilog();
+
 
         builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
         builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(JwtHelper.SetBearerOptions);
@@ -47,7 +59,7 @@ public class Program
         var app = builder.Build();
 
 
-        app.UseHttpsRedirection();
+        app.UseSerilogRequestLogging();
 
         app.UseAuthorization();
 

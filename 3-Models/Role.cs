@@ -8,7 +8,6 @@ public class Role
     [Key]
     public int RoleId { get; set; }
 
-    [Required(ErrorMessage = "Missing RoleName")]
     public string RoleName { get; set; } = null!;
 
     [InverseProperty("Role")]

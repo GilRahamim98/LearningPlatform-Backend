@@ -1,6 +1,6 @@
 ﻿namespace Talent;
 
-public class LessonDTO
+public class LessonDto
 {
     public Guid Id { get; set; }
     public string Title { get; set; } = null!;
