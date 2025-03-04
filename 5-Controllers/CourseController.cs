@@ -45,8 +45,10 @@ public class CourseController : ControllerBase, IDisposable
     {
         ValidationResult validationResult = _courseValidator.Validate(createCourseDto);
         if (!validationResult.IsValid)
-            return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         CourseDto dbCourse = await _courseService.AddCourse(createCourseDto);
         return Created("api/courses/" + dbCourse.Id, dbCourse);
     }
@@ -56,7 +58,10 @@ public class CourseController : ControllerBase, IDisposable
     {
         ValidationResult validationResult = _courseValidator.Validate(createCourseDto);
         if (!validationResult.IsValid)
-            return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         CourseDto? updatedCourse = await _courseService.UpdateCourse(id, createCourseDto);
         if (updatedCourse == null) return NotFound(new ResourceNotFound(id));
         return Ok(updatedCourse);

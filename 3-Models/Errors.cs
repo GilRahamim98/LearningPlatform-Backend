@@ -1,49 +1,37 @@
 ﻿namespace Talent;
 
-public abstract class BaseError
+public abstract class BaseError<T>
 {
-    public string Message { get; set; }
-    protected BaseError(string message)
+    public T Errors { get; set; }
+    protected BaseError(T message)
     {
-        Message = message;
+        Errors = message;
     }   
 }
 
-public class RouteNotFoundError : BaseError 
+public class RouteNotFoundError : BaseError<string> 
 {
     public RouteNotFoundError(string method, string route) : base($"Route '{route}' on method '{method}' not exists.") { }
 }
 
-public class ResourceNotFound : BaseError 
+public class ResourceNotFound : BaseError <string>
 {
     public ResourceNotFound(Guid id) : base($"Id '{id}' not found") { }
     public ResourceNotFound(string message) : base(message) { } 
 }
 
-public class ValidationError : BaseError
+public class ValidationError<T> : BaseError<T>
 {
-    public List<string> Errors { get; }
-
-    public ValidationError(params string[] errors)
-        : base( "One or more validation errors occurred.")
-    {
-        Errors = errors.ToList();
-    }
-
-    public ValidationError(IEnumerable<string> errors)
-        : base("One or more validation errors occurred.")
-    {
-        Errors = errors.ToList();
-    }
+    public ValidationError(T errors): base(errors){}
 }
 
-public class UnauthorizedError : BaseError 
+public class UnauthorizedError : BaseError <string>
 {
     public UnauthorizedError(string message) : base(message) { }
 }
 
 
-public class InternalServerError : BaseError 
+public class InternalServerError : BaseError<string>
 {
     public InternalServerError(string message) : base(message) { }
 }

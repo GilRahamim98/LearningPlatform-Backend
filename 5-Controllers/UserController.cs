@@ -39,17 +39,16 @@ public class UserController : ControllerBase, IDisposable
     }
 
     [HttpPost("register")]
-    public async Task<IActionResult> Register([FromBody]RegisterUserDto createUserDto)
+    public async Task<IActionResult> Register([FromBody] RegisterUserDto createUserDto)
     {
         ValidationResult validationResult = _registerValidator.Validate(createUserDto);
-        if (!validationResult.IsValid)
-        {
-            var errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-            return BadRequest(new ValidationError(errors));
-        }
+        List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
         if (await _userService.EmailExists(createUserDto.Email))
-            return BadRequest(new ValidationError("Email is already exists."));
-       
+            errors.Add("Email is already exists.");
+
+        if (errors.Any())
+            return BadRequest(new ValidationError<List<string>>(errors));
+
         string token = await _userService.Register(createUserDto);
         return Created("", token);
     }
@@ -59,7 +58,10 @@ public class UserController : ControllerBase, IDisposable
     {
         ValidationResult validationResult = _loginValidator.Validate(loginDto);
         if (!validationResult.IsValid)
-            return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
 
         string? token = await _userService.Login(loginDto);
         if (token == null) return Unauthorized(new UnauthorizedError("Incorrect email or password"));
@@ -69,16 +71,19 @@ public class UserController : ControllerBase, IDisposable
     [HttpPost("enroll-to-course")]
     public async Task<IActionResult> EnrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
     {
-        if(! await _courseService.CourseExists(createEnrollmentDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
-        
-        if(! await _userService.UserExists(createEnrollmentDto.UserId)) return NotFound(new ResourceNotFound("User not found"));
-        
+        if (!await _courseService.CourseExists(createEnrollmentDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
+
+        if (!await _userService.UserExists(createEnrollmentDto.UserId)) return NotFound(new ResourceNotFound("User not found"));
+
         bool alreadyEnrolled = await _enrollmentService.IsUserEnrolled(createEnrollmentDto.UserId, createEnrollmentDto.CourseId);
-        if (alreadyEnrolled) return BadRequest(new ValidationError("User is already enrolled in this course."));
-        
+        if (alreadyEnrolled) return BadRequest(new ValidationError<string>("User is already enrolled in this course."));
+
         ValidationResult validationResult = _enrollmentValidator.Validate(createEnrollmentDto);
-        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-        
+        if (!validationResult.IsValid)
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         EnrollmentDto newEnrollment = await _enrollmentService.EnrollUserInCourse(createEnrollmentDto);
         return Created("/api/users/enroll-to-course", newEnrollment);
     }
@@ -109,9 +114,13 @@ public class UserController : ControllerBase, IDisposable
     [HttpPost("progresses")]
     public async Task<IActionResult> AddProgress([FromBody] CreateProgressDto createProgressDto)
     {
-        if(!await _progressService.IsUserEnrolled(createProgressDto)) return BadRequest("The user is not enrolled for this lesson's course.");
+        if (!await _progressService.IsUserEnrolled(createProgressDto)) return BadRequest("The user is not enrolled for this lesson's course.");
         ValidationResult validationResult = _progressValidator.Validate(createProgressDto);
-        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+        if (!validationResult.IsValid)
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         ProgressDto dbProgress = await _progressService.AddProgress(createProgressDto);
         return Created("api/progresses/" + dbProgress.Id, dbProgress);
     }
@@ -121,8 +130,11 @@ public class UserController : ControllerBase, IDisposable
     {
         if (!await _progressService.IsUserEnrolled(createProgressDto)) return BadRequest("The user is not enrolled for this lesson's course.");
         ValidationResult validationResult = _progressValidator.Validate(createProgressDto);
-        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-
+        if (!validationResult.IsValid)
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         ProgressDto? dbProgress = await _progressService.UpdateProgress(id, createProgressDto);
         return Ok(dbProgress);
     }

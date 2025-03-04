@@ -51,8 +51,11 @@ public class LessonController : ControllerBase, IDisposable
     {
         if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
         ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-
+        if (!validationResult.IsValid)
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
         return Created("api/lessons/" + dbLesson.Id, dbLesson);
     }
@@ -62,8 +65,11 @@ public class LessonController : ControllerBase, IDisposable
     {
         if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
         ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        if (!validationResult.IsValid) return BadRequest(new ValidationError(ModelState.GetAllErrors()));
-
+        if (!validationResult.IsValid)
+        {
+            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError<List<string>>(errors));
+        }
         LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
         if (dbLesson == null) return NotFound(new ResourceNotFound(id));
         return Ok(dbLesson);
