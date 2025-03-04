@@ -43,7 +43,10 @@ public class UserController : ControllerBase, IDisposable
     {
         ValidationResult validationResult = _registerValidator.Validate(createUserDto);
         if (!validationResult.IsValid)
-            return BadRequest(new ValidationError(ModelState.GetAllErrors()));
+        {
+            var errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+            return BadRequest(new ValidationError(errors));
+        }
         if (await _userService.EmailExists(createUserDto.Email))
             return BadRequest(new ValidationError("Email is already exists."));
        

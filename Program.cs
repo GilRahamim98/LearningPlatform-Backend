@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Json.Serialization;
 using FluentValidation;
-using FluentValidation.AspNetCore;
 using Serilog;
 
 
@@ -37,12 +36,12 @@ public class Program
         builder.Services.AddScoped<LessonService>();
         builder.Services.AddScoped<EnrollmentService>();
         builder.Services.AddScoped<ProgressService>();
-        builder.Services.AddScoped<IValidator<RegisterUserDto>,RegisterValidator>();
-        builder.Services.AddScoped<IValidator<LoginUserDto>,LoginValidator>();
-        builder.Services.AddScoped<IValidator<CreateCourseDto>,CourseValidator>();
-        builder.Services.AddScoped<IValidator<CreateLessonDto>,LessonValidator>();
-        builder.Services.AddScoped<IValidator<CreateEnrollmentDto>,EnrollmentValidator>();
-        builder.Services.AddScoped<IValidator<CreateProgressDto>,ProgressValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<RegisterValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<LoginValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<CourseValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<LessonValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<EnrollmentValidator>();
+        builder.Services.AddValidatorsFromAssemblyContaining<ProgressValidator>();
         builder.Services.AddAutoMapper(typeof(Program));
         
         builder.Host.UseSerilog();
@@ -54,7 +53,6 @@ public class Program
         builder.Services.AddControllers()
             .AddJsonOptions(options => options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles)
             .AddJsonOptions(options => options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull);
-        builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
 
         var app = builder.Build();
 

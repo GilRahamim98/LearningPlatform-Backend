@@ -3,20 +3,28 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\logs\\log-20250304.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:logs\\log-20250304.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\2-utils\\extentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:2-utils\\extentions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\3-models\\errors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\errors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\5-controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\5-controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\coursecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\learningplatform-backend\\5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,58 +34,96 @@
       "DocumentGroups": [
         {
           "DockedWidth": 247,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 6,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "log-20250304.txt",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\logs\\log-20250304.txt",
-              "RelativeDocumentMoniker": "logs\\log-20250304.txt",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\logs\\log-20250304.txt",
-              "RelativeToolTip": "logs\\log-20250304.txt",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAABkAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2025-03-04T13:22:51.605Z",
+              "DocumentIndex": 3,
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "5-Controllers\\LessonController.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\LessonController.cs",
+              "RelativeToolTip": "5-Controllers\\LessonController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAACwAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T13:41:42.257Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "CourseService.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\4-Services\\CourseService.cs",
-              "RelativeDocumentMoniker": "4-Services\\CourseService.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\4-Services\\CourseService.cs",
-              "RelativeToolTip": "4-Services\\CourseService.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAAADIAAAAIAAAAAAAAAA==",
+              "Title": "Errors.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\3-Models\\Errors.cs",
+              "RelativeDocumentMoniker": "3-Models\\Errors.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\3-Models\\Errors.cs",
+              "RelativeToolTip": "3-Models\\Errors.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABgAAAAeAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T13:13:39.657Z",
+              "WhenOpened": "2025-03-04T13:39:22.792Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
+              "Title": "Extentions.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\2-Utils\\Extentions.cs",
+              "RelativeDocumentMoniker": "2-Utils\\Extentions.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\2-Utils\\Extentions.cs",
+              "RelativeToolTip": "2-Utils\\Extentions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T13:12:05.913Z",
+              "WhenOpened": "2025-03-04T13:38:23.996Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "UserController.cs",
               "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "5-Controllers\\UserController.cs",
               "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\UserController.cs",
               "RelativeToolTip": "5-Controllers\\UserController.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAC4AAAAtAAAAAAAAAA==",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAC8AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-04T13:11:31.391Z",
+              "WhenOpened": "2025-03-04T13:37:56.12Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "CourseController.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\CourseController.cs",
+              "RelativeDocumentMoniker": "5-Controllers\\CourseController.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\5-Controllers\\CourseController.cs",
+              "RelativeToolTip": "5-Controllers\\CourseController.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T13:37:48.439Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform-Backend\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAACYAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-04T13:29:31.026Z",
               "EditorCaption": ""
             }
           ]

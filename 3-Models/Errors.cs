@@ -20,9 +20,21 @@ public class ResourceNotFound : BaseError
     public ResourceNotFound(string message) : base(message) { } 
 }
 
-public class ValidationError : BaseError 
+public class ValidationError : BaseError
 {
-    public ValidationError(string message) : base(message) { }
+    public List<string> Errors { get; }
+
+    public ValidationError(params string[] errors)
+        : base( "One or more validation errors occurred.")
+    {
+        Errors = errors.ToList();
+    }
+
+    public ValidationError(IEnumerable<string> errors)
+        : base("One or more validation errors occurred.")
+    {
+        Errors = errors.ToList();
+    }
 }
 
 public class UnauthorizedError : BaseError 
