@@ -30,6 +30,15 @@ public class Program
             }
         }
 
+        builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowAngularOrigin",
+                builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
+        });
+
         builder.Services.AddDbContext<AcademiaXContext>();
         builder.Services.AddScoped<UserService>();
         builder.Services.AddScoped<CourseService>();
@@ -61,7 +70,7 @@ public class Program
 
         app.UseAuthorization();
 
-
+        app.UseCors("AllowAngularOrigin");
         app.MapControllers();
 
         app.Run();

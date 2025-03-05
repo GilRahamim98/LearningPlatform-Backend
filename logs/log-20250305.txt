@@ -21,3 +21,14 @@
 2025-03-05 15:13:27.351 +02:00 [INF] Executed endpoint 'Talent.UserController.Register (LearningPlatform)'
 2025-03-05 15:13:27.352 +02:00 [INF] HTTP POST /api/users/register responded 400 in 50.8511 ms
 2025-03-05 15:13:27.357 +02:00 [INF] Request finished HTTP/1.1 POST http://localhost:5120/api/users/register - 400 null application/json; charset=utf-8 112.8269ms
+2025-03-05 17:51:28.300 +02:00 [INF] User profile is available. Using 'C:\Users\alisk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-05 17:51:28.413 +02:00 [INF] Now listening on: http://localhost:5120
+2025-03-05 17:51:28.463 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-05 17:51:28.464 +02:00 [INF] Hosting environment: Development
+2025-03-05 17:51:28.465 +02:00 [INF] Content root path: E:\Gil\Projects\LearningPlatform
+2025-03-05 17:51:31.972 +02:00 [INF] Application is shutting down...
+2025-03-05 23:50:17.509 +02:00 [INF] User profile is available. Using 'C:\Users\alisk\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2025-03-05 23:50:17.618 +02:00 [INF] Now listening on: http://localhost:5120
+2025-03-05 23:50:17.676 +02:00 [INF] Application started. Press Ctrl+C to shut down.
+2025-03-05 23:50:17.677 +02:00 [INF] Hosting environment: Development
+2025-03-05 23:50:17.678 +02:00 [INF] Content root path: E:\Gil\Projects\LearningPlatform
