@@ -49,11 +49,11 @@ public class LessonController : ControllerBase, IDisposable
     [HttpPost]
     public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
     {
-        if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
         ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        if (!validationResult.IsValid)
+        List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+        if (!await _courseService.CourseExists(createLessonDto.CourseId)) errors.Add("Course not found");
+        if (errors.Any())
         {
-            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
             return BadRequest(new ValidationError<List<string>>(errors));
         }
         LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
@@ -63,11 +63,11 @@ public class LessonController : ControllerBase, IDisposable
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateLesson([FromRoute] Guid id, [FromBody] CreateLessonDto createLessonDto)
     {
-        if (!await _courseService.CourseExists(createLessonDto.CourseId)) return NotFound(new ResourceNotFound("Course not found"));
         ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        if (!validationResult.IsValid)
+        List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
+        if (!await _courseService.CourseExists(createLessonDto.CourseId)) errors.Add("Course not found");
+        if (errors.Any())
         {
-            List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
             return BadRequest(new ValidationError<List<string>>(errors));
         }
         LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
