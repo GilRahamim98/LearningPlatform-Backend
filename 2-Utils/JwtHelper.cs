@@ -18,7 +18,7 @@ public static class JwtHelper
         string json = JsonSerializer.Serialize(slimUser, new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
 
         List<Claim> claims = new List<Claim> {
-            new Claim(ClaimTypes.Actor, json),
+            new Claim("user", json),
             new Claim(ClaimTypes.Role, user.Role?.RoleName)
         };
 

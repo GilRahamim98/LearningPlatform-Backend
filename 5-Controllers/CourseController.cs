@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 namespace Talent;
 
@@ -39,7 +40,7 @@ public class CourseController : ControllerBase, IDisposable
         if (course == null) return NotFound(new ResourceNotFound(id));
         return Ok(course);
     }
-
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpPost]
     public async Task<IActionResult> AddCourse([FromBody] CreateCourseDto createCourseDto)
     {
@@ -53,6 +54,7 @@ public class CourseController : ControllerBase, IDisposable
         return Created("api/courses/" + dbCourse.Id, dbCourse);
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCourse([FromRoute] Guid id, [FromBody] CreateCourseDto createCourseDto)
     {
@@ -67,7 +69,7 @@ public class CourseController : ControllerBase, IDisposable
         return Ok(updatedCourse);
     }
 
-
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCourse([FromRoute] Guid id)
     {
@@ -76,6 +78,7 @@ public class CourseController : ControllerBase, IDisposable
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpGet("enrollments-by-course/{courseId}")]
     public async Task<IActionResult> GetCourseEnrollments([FromRoute] Guid courseId)
     {

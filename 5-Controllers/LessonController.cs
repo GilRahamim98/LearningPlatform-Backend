@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Talent;
@@ -46,6 +47,7 @@ public class LessonController : ControllerBase, IDisposable
         return Ok(lesson);
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpPost]
     public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
     {
@@ -60,6 +62,7 @@ public class LessonController : ControllerBase, IDisposable
         return Created("api/lessons/" + dbLesson.Id, dbLesson);
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateLesson([FromRoute] Guid id, [FromBody] CreateLessonDto createLessonDto)
     {
@@ -75,6 +78,7 @@ public class LessonController : ControllerBase, IDisposable
         return Ok(dbLesson);
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteLesson([FromRoute] Guid id)
     {
@@ -83,6 +87,7 @@ public class LessonController : ControllerBase, IDisposable
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin,Instructor")]
     [HttpGet("progress-by-lesson/{lessonId}")]
     public async Task<IActionResult> GetProgressByLesson([FromRoute] Guid lessonId)
     {

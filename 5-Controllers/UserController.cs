@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Talent;
@@ -68,6 +69,7 @@ public class UserController : ControllerBase, IDisposable
         return Ok(token);
     }
 
+    [Authorize(Roles = "Admin,Student")]
     [HttpPost("enroll-to-course")]
     public async Task<IActionResult> EnrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
     {
@@ -88,7 +90,7 @@ public class UserController : ControllerBase, IDisposable
         return Created("/api/users/enroll-to-course", newEnrollment);
     }
 
-
+    [Authorize(Roles = "Admin,Student")]
     [HttpGet("enrollments/{userId}")]
     public async Task<IActionResult> GetUserEnrollments([FromRoute] Guid userId)
     {
@@ -96,6 +98,7 @@ public class UserController : ControllerBase, IDisposable
         return Ok(courses);
     }
 
+    [Authorize(Roles = "Admin,Student")]
     [HttpDelete("unenroll")]
     public async Task<IActionResult> UnenrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
     {
@@ -104,6 +107,7 @@ public class UserController : ControllerBase, IDisposable
         return NoContent();
     }
 
+    [Authorize(Roles = "Admin,Student")]
     [HttpGet("progress-by-user/{userId}")]
     public async Task<IActionResult> GetProgressByUser([FromRoute] Guid userId)
     {
@@ -111,6 +115,7 @@ public class UserController : ControllerBase, IDisposable
         return Ok(progresses);
     }
 
+    [Authorize(Roles = "Admin,Student")]
     [HttpPost("progresses")]
     public async Task<IActionResult> AddProgress([FromBody] CreateProgressDto createProgressDto)
     {
@@ -125,6 +130,7 @@ public class UserController : ControllerBase, IDisposable
         return Created("api/progresses/" + dbProgress.Id, dbProgress);
     }
 
+    [Authorize(Roles = "Admin,Student")]
     [HttpPut("progresses/{id}")]
     public async Task<IActionResult> UpdateProgress([FromRoute] Guid id, [FromBody] CreateProgressDto createProgressDto)
     {

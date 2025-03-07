@@ -21,7 +21,7 @@ public class UserService : IDisposable
         User user = _mapper.Map<User>(createUserDto);
         user.Email = user.Email.ToLower();
         user.Password = PasswordHasher.HashPassword(user.Password);
-        _db.Users.Add(user);
+        await _db.Users.AddAsync(user);
         await _db.SaveChangesAsync();
         user.Role = await _db.Roles.SingleAsync(r => r.RoleId == user.RoleId);
         return JwtHelper.GetNewToken(user);
@@ -50,12 +50,6 @@ public class UserService : IDisposable
     {
         return await _db.Users.AsNoTracking().AnyAsync(u => u.Email == email);
     }
-
-
-
-
-
-
 
     public void Dispose()
     {
