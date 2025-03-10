@@ -52,7 +52,8 @@ public class Program
         builder.Services.AddValidatorsFromAssemblyContaining<EnrollmentValidator>();
         builder.Services.AddValidatorsFromAssemblyContaining<ProgressValidator>();
         builder.Services.AddAutoMapper(typeof(Program));
-        
+        builder.Services.AddMvc(options => options.Filters.Add<CatchAllFilter>()); 
+
         builder.Host.UseSerilog();
 
 

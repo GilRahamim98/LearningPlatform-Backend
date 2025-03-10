@@ -95,6 +95,17 @@ public class LessonController : ControllerBase, IDisposable
         return Ok(progresses);
     }
 
+
+    [HttpGet("course/{courseId}")]
+    public async Task<IActionResult> GetLessonByCourseId([FromRoute] Guid courseId)
+    {
+        List<LessonDto> lessons = await _lessonService.GetLessonsByCourseId(courseId);
+        return Ok(lessons);
+    }
+
+
+
+
     public void Dispose()
     {
         _lessonService.Dispose();

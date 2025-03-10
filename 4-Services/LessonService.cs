@@ -57,6 +57,13 @@ public class LessonService : IDisposable
         return await _db.Lessons.AnyAsync(l=> l.Id == id);
     }
 
+
+    public async Task<List<LessonDto>> GetLessonsByCourseId(Guid courseId)
+    {
+        List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
+        return _mapper.Map<List<LessonDto>>(lessons);
+    }
+
     public void Dispose()
     {
         _db.Dispose();

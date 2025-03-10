@@ -94,16 +94,16 @@ public class UserController : ControllerBase, IDisposable
     [HttpGet("enrollments/{userId}")]
     public async Task<IActionResult> GetUserEnrollments([FromRoute] Guid userId)
     {
-        List<CourseDto> courses = await _enrollmentService.GetUserEnrollments(userId);
-        return Ok(courses);
+        List<EnrollmentDto> enrollments = await _enrollmentService.GetUserEnrollments(userId);
+        return Ok(enrollments);
     }
 
     [Authorize(Roles = "Admin,Student")]
-    [HttpDelete("unenroll")]
-    public async Task<IActionResult> UnenrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
+    [HttpDelete("unenroll/{enrollmentId}")]
+    public async Task<IActionResult> UnenrollUser([FromRoute] Guid enrollmentId)
     {
-        bool deleted = await _enrollmentService.UnenrollUserFromCourse(createEnrollmentDto);
-        if (!deleted) return NotFound(new ResourceNotFound($"Enrollment not found for this user id : {createEnrollmentDto.UserId} and for this course id : {createEnrollmentDto.CourseId}"));
+        bool deleted = await _enrollmentService.UnenrollUserFromCourse(enrollmentId);
+        if (!deleted) return NotFound(new ResourceNotFound($"Enrollment with id: {enrollmentId} not found "));
         return NoContent();
     }
 

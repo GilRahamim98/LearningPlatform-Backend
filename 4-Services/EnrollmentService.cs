@@ -28,10 +28,10 @@ public class EnrollmentService : IDisposable
         return _mapper.Map<EnrollmentDto>(enrollment);
     }
 
-    public async Task<List<CourseDto>> GetUserEnrollments(Guid userId)
+    public async Task<List<EnrollmentDto>> GetUserEnrollments(Guid userId)
     {
-        List<Course> courses = await _db.Enrollments.AsNoTracking().Where(e => e.UserId == userId).Select(e => e.Course).ToListAsync();
-        return _mapper.Map<List<CourseDto>>(courses);
+        List<Enrollment> enrollments = await _db.Enrollments.AsNoTracking().Where(e => e.UserId == userId).ToListAsync();
+        return _mapper.Map<List<EnrollmentDto>>(enrollments);
     }
 
     public async Task<List<UserDto>> GetCourseEnrollments(Guid courseId)
@@ -40,9 +40,9 @@ public class EnrollmentService : IDisposable
         return _mapper.Map<List<UserDto>>(users);
     }
 
-    public async Task<bool> UnenrollUserFromCourse(CreateEnrollmentDto createEnrollmentDto)
+    public async Task<bool> UnenrollUserFromCourse(Guid enrollmentId)
     {
-        Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.UserId == createEnrollmentDto.UserId && e.CourseId == createEnrollmentDto.CourseId);
+        Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.Id == enrollmentId);
 
         if (enrollment == null) return false;
         _db.Enrollments.Remove(enrollment);

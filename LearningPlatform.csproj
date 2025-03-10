@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="1-Assets\" />
-    <Folder Include="6-Middleware\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -175,6 +175,22 @@
   },
   {
     "ContainingType": "Talent.LessonController",
+    "Method": "GetLessonByCourseId",
+    "RelativePath": "api/Lessons/course/{courseId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "courseId",
+        "Type": "System.Guid",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Talent.LessonController",
     "Method": "GetProgressByLesson",
     "RelativePath": "api/Lessons/progress-by-lesson/{lessonId}",
     "HttpMethod": "GET",
@@ -309,14 +325,14 @@
   {
     "ContainingType": "Talent.UserController",
     "Method": "UnenrollUser",
-    "RelativePath": "api/users/unenroll",
+    "RelativePath": "api/users/unenroll/{enrollmentId}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "createEnrollmentDto",
-        "Type": "Talent.CreateEnrollmentDto",
+        "Name": "enrollmentId",
+        "Type": "System.Guid",
         "IsRequired": true
       }
     ],

@@ -576,3 +576,7 @@ E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\refint\LearningPlatfor
 E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\LearningPlatform.pdb
 E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\LearningPlatform.genruntimeconfig.cache
 E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\ref\LearningPlatform.dll
+E:\Gil\Projects\LearningPlatform-Backend\bin\Debug\net8.0\LearningPlatform.staticwebassets.endpoints.json
+E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\staticwebassets\msbuild.LearningPlatform.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
+E:\Gil\Projects\LearningPlatform-Backend\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
