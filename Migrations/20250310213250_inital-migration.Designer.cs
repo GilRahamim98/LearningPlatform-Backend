@@ -12,8 +12,8 @@ using Talent;
 namespace Talent.Migrations
 {
     [DbContext(typeof(AcademiaXContext))]
-    [Migration("20250304072642_init-migration")]
-    partial class initmigration
+    [Migration("20250310213250_inital-migration")]
+    partial class initalmigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

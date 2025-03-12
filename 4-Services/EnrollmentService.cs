@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using Serilog;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Talent;
 
@@ -42,13 +44,29 @@ public class EnrollmentService : IDisposable
 
     public async Task<bool> UnenrollUserFromCourse(Guid enrollmentId)
     {
-        Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.Id == enrollmentId);
+        await using IDbContextTransaction trabsaction = _db.Database.BeginTransaction();
 
-        if (enrollment == null) return false;
-        _db.Enrollments.Remove(enrollment);
-        await _db.SaveChangesAsync();
-        return true;
+        try
+        {
+            Enrollment? enrollment = _db.Enrollments.SingleOrDefault(e => e.Id == enrollmentId);
+            if (enrollment == null) return false;
+
+            List<Progress> progresses = await _db.Progresses.Where(p=>p.UserId == enrollment.UserId && p.Lesson.CourseId == enrollment.CourseId).ToListAsync();
+            _db.Progresses.RemoveRange(progresses);
+            _db.Enrollments.Remove(enrollment);
+            await _db.SaveChangesAsync();
+            await trabsaction.CommitAsync();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            await trabsaction.RollbackAsync();
+            Log.Error(ex.Message);
+            return false;
+
+        }
     }
+
 
 
     public async Task<bool> IsUserEnrolled(Guid userId, Guid courseId)

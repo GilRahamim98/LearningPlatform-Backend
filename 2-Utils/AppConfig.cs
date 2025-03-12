@@ -13,6 +13,6 @@ public class AppConfig
         IConfigurationRoot settings = new ConfigurationBuilder().AddJsonFile("appsettings.json").AddJsonFile($"appsettings.{env.EnvironmentName}.json").Build();
         ConnectionString = settings.GetConnectionString("AcademiaX")!;
 
-        JwtKeyExpire = env.IsDevelopment() ? 5 : 1;
+        JwtKeyExpire = env.IsDevelopment() ? 24 : 8;
     }
 }

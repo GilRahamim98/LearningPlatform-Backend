@@ -21,6 +21,27 @@ public class AcademiaXContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        modelBuilder.Entity<Enrollment>()
+            .HasOne(e => e.User)
+            .WithMany() 
+            .OnDelete(DeleteBehavior.Cascade); 
+
+        modelBuilder.Entity<Enrollment>()
+            .HasOne(e => e.Course)
+            .WithMany() 
+            .OnDelete(DeleteBehavior.Cascade); 
+
+        modelBuilder.Entity<Progress>()
+            .HasOne(p => p.User)
+            .WithMany() 
+            .OnDelete(DeleteBehavior.Cascade); 
+
+        modelBuilder.Entity<Progress>()
+            .HasOne(p => p.Lesson)
+            .WithMany() 
+            .OnDelete(DeleteBehavior.Cascade);
+
         List<Role> roles = new List<Role>
         {
             new Role{RoleId = 1, RoleName= "Student" },

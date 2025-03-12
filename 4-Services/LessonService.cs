@@ -26,12 +26,32 @@ public class LessonService : IDisposable
         return _mapper.Map<LessonDto?>(lesson);
     }
 
+    public async Task<List<LessonDto>> GetLessonsByCourseId(Guid courseId)
+    {
+        List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
+        return _mapper.Map<List<LessonDto>>(lessons);
+    }
+
+    public async Task<List<LessonPreviewDto>> GetLessonsPreviewByCourse(Guid courseId)
+    {
+        List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
+        return _mapper.Map<List<LessonPreviewDto>>(lessons);
+    }
+
     public async Task<LessonDto> AddLesson(CreateLessonDto createLessonDto)
     {
         Lesson lesson = _mapper.Map<Lesson>(createLessonDto);
-        _db.Lessons.Add(lesson);
+        await _db.Lessons.AddAsync(lesson);
         await _db.SaveChangesAsync();
         return _mapper.Map<LessonDto>(lesson);
+    }
+
+    public async Task<List<LessonDto>> AddLessons(List<CreateLessonDto> lessonsDto)
+    {
+        List<Lesson> lessons = _mapper.Map<List<Lesson>>(lessonsDto);
+        await _db.Lessons.AddRangeAsync(lessons);
+        await _db.SaveChangesAsync();
+        return _mapper.Map<List<LessonDto>>(lessons);
     }
 
     public async Task<LessonDto?> UpdateLesson(Guid id, CreateLessonDto createLessonDto)
@@ -52,17 +72,21 @@ public class LessonService : IDisposable
         return true;
     }
 
+    public async Task<bool> DeleteLessons(List<Guid> ids)
+    {
+        List<Lesson> lessonsToDelete = await _db.Lessons.Where(lesson => ids.Contains(lesson.Id)).ToListAsync();
+        if (lessonsToDelete.Count != ids.Count) return false;
+        _db.Lessons.RemoveRange(lessonsToDelete);
+        await _db.SaveChangesAsync();
+        return true;
+    }
+
     public async Task<bool> LessonExists(Guid id)
     {
         return await _db.Lessons.AnyAsync(l=> l.Id == id);
     }
 
 
-    public async Task<List<LessonDto>> GetLessonsByCourseId(Guid courseId)
-    {
-        List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
-        return _mapper.Map<List<LessonDto>>(lessons);
-    }
 
     public void Dispose()
     {

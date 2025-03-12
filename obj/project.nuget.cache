@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "gixWmnCWDjs=",
+  "dgSpecHash": "AzPNapxsiC4=",
   "success": true,
-  "projectFilePath": "E:\\Gil\\Projects\\LearningPlatform-Backend\\LearningPlatform.csproj",
+  "projectFilePath": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\alisk\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\alisk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

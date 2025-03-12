@@ -14,7 +14,7 @@ public class LessonValidator : AbstractValidator<CreateLessonDto>
 
         RuleFor(lesson => lesson.VideoUrl)
             .NotEmpty().WithMessage("VideoUrl is required")
-            .Must(url => Uri.IsWellFormedUriString(url, UriKind.Absolute)).WithMessage("Invalid video URL format");
+            .Must(uri => Uri.TryCreate(uri, UriKind.Absolute, out _)).WithMessage("Invalid video URL format");
 
         RuleFor(lesson => lesson.CourseId)
             .NotEmpty().WithMessage("CourseId is required");

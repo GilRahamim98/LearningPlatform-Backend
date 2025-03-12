@@ -16,6 +16,7 @@ public class MappingProfile : Profile
         // Mapping between Lesson and LessonDto
         CreateMap<Lesson, LessonDto>();
         CreateMap<CreateLessonDto, Lesson>();
+        CreateMap<Lesson,LessonPreviewDto>();
 
         // Mapping between Enrollment and EnrollmentDto
         CreateMap<Enrollment, EnrollmentDto>();

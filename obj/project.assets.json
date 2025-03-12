@@ -5525,11 +5525,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Gil\\Projects\\LearningPlatform-Backend\\LearningPlatform.csproj",
+      "projectUniqueName": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform.csproj",
       "projectName": "LearningPlatform",
-      "projectPath": "E:\\Gil\\Projects\\LearningPlatform-Backend\\LearningPlatform.csproj",
+      "projectPath": "E:\\Gil\\Projects\\LearningPlatform\\LearningPlatform.csproj",
       "packagesPath": "C:\\Users\\alisk\\.nuget\\packages\\",
-      "outputPath": "E:\\Gil\\Projects\\LearningPlatform-Backend\\obj\\",
+      "outputPath": "E:\\Gil\\Projects\\LearningPlatform\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -5628,7 +5628,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.103/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
