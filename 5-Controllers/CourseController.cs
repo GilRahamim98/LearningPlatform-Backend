@@ -11,7 +11,6 @@ public class CourseController : ControllerBase, IDisposable
     private readonly CourseService _courseService;
     private readonly EnrollmentService _enrollmentService;
 
-    private IValidator<CreateEnrollmentDto> _enrollmentValidator;
     private IValidator<CreateCourseDto> _courseValidator;
 
     public CourseController(
@@ -22,7 +21,6 @@ public class CourseController : ControllerBase, IDisposable
     {
         _courseService = courseService;
         _enrollmentService = enrollmentService;
-        _enrollmentValidator = enrollmentValidator;
         _courseValidator = courseValidator;
     }
 

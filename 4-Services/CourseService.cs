@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore.Storage;
+using Serilog;
 
 namespace Talent;
 
@@ -46,11 +48,23 @@ public class CourseService : IDisposable
 
     public async Task<bool> DeleteCourse(Guid id)
     {
-        Course? dbCourse = await _db.Courses.FindAsync(id);
-        if (dbCourse == null) return false;
-        _db.Courses.Remove(dbCourse);
-        await _db.SaveChangesAsync();
-        return true;
+        await using IDbContextTransaction trabsaction = _db.Database.BeginTransaction();
+        try
+        {
+            Course? dbCourse = await _db.Courses.FindAsync(id);
+            if (dbCourse == null) return false;
+            _db.Courses.Remove(dbCourse);
+            await _db.SaveChangesAsync();
+            return true;
+        }
+        catch (Exception ex)
+        {
+            await trabsaction.RollbackAsync();
+            Log.Error(ex.Message);
+            return false;
+
+
+        }
     }
 
     public async Task<bool> CourseExists(Guid id)

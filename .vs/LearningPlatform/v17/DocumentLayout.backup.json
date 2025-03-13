@@ -3,28 +3,20 @@
   "WorkspaceRootPath": "E:\\Gil\\Projects\\LearningPlatform\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\validators\\registervalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\courseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\5-controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\lessoncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\lessonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\lessonservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\mappings\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\validators\\lessonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\validators\\lessonvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\3-models\\validators\\coursevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:3-models\\validators\\coursevalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:4-services\\userservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|e:\\gil\\projects\\learningplatform\\5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2B59762-5A4F-441E-BD53-B95B15E12661}|LearningPlatform.csproj|solutionrelative:5-controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,82 +26,59 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MappingProfile.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Mappings\\MappingProfile.cs",
-              "RelativeDocumentMoniker": "3-Models\\Mappings\\MappingProfile.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Mappings\\MappingProfile.cs",
-              "RelativeToolTip": "3-Models\\Mappings\\MappingProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-12T20:28:31.626Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LessonController.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\LessonController.cs",
-              "RelativeDocumentMoniker": "5-Controllers\\LessonController.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\LessonController.cs",
-              "RelativeToolTip": "5-Controllers\\LessonController.cs",
-              "ViewState": "AgIAACoAAAAAAAAAAAAAADkAAAAdAAAAAAAAAA==",
+              "Title": "RegisterValidator.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\RegisterValidator.cs",
+              "RelativeDocumentMoniker": "3-Models\\Validators\\RegisterValidator.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\RegisterValidator.cs",
+              "RelativeToolTip": "3-Models\\Validators\\RegisterValidator.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABQAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T22:50:51.314Z",
+              "WhenOpened": "2025-03-13T22:50:47.999Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "LessonService.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\LessonService.cs",
-              "RelativeDocumentMoniker": "4-Services\\LessonService.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\LessonService.cs",
-              "RelativeToolTip": "4-Services\\LessonService.cs",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAACIAAABHAAAAAAAAAA==",
+              "Title": "CourseService.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\CourseService.cs",
+              "RelativeDocumentMoniker": "4-Services\\CourseService.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\CourseService.cs",
+              "RelativeToolTip": "4-Services\\CourseService.cs",
+              "ViewState": "AgIAADMAAAAAAAAAAAAhwEMAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T22:48:57.691Z",
+              "WhenOpened": "2025-03-13T22:22:22.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LessonController.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\LessonController.cs",
+              "RelativeDocumentMoniker": "5-Controllers\\LessonController.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\LessonController.cs",
+              "RelativeToolTip": "5-Controllers\\LessonController.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-13T22:12:08.019Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "LessonValidator.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\LessonValidator.cs",
-              "RelativeDocumentMoniker": "3-Models\\Validators\\LessonValidator.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\LessonValidator.cs",
-              "RelativeToolTip": "3-Models\\Validators\\LessonValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T21:21:29.966Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "CourseValidator.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\CourseValidator.cs",
-              "RelativeDocumentMoniker": "3-Models\\Validators\\CourseValidator.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\3-Models\\Validators\\CourseValidator.cs",
-              "RelativeToolTip": "3-Models\\Validators\\CourseValidator.cs",
+              "Title": "UserController.cs",
+              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\UserController.cs",
+              "RelativeDocumentMoniker": "5-Controllers\\UserController.cs",
+              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\5-Controllers\\UserController.cs",
+              "RelativeToolTip": "5-Controllers\\UserController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T17:47:15.927Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "UserService.cs",
-              "DocumentMoniker": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
-              "RelativeDocumentMoniker": "4-Services\\UserService.cs",
-              "ToolTip": "E:\\Gil\\Projects\\LearningPlatform\\4-Services\\UserService.cs",
-              "RelativeToolTip": "4-Services\\UserService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-11T11:19:26.385Z"
+              "WhenOpened": "2025-03-13T22:12:07.351Z",
+              "EditorCaption": ""
             }
           ]
         }

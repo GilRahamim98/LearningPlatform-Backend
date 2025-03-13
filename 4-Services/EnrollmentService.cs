@@ -67,8 +67,6 @@ public class EnrollmentService : IDisposable
         }
     }
 
-
-
     public async Task<bool> IsUserEnrolled(Guid userId, Guid courseId)
     {
         return await _db.Enrollments.AsNoTracking().AnyAsync(e => e.UserId == userId && e.CourseId == courseId);

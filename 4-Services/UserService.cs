@@ -9,7 +9,6 @@ public class UserService : IDisposable
     private readonly AcademiaXContext _db;
     private readonly IMapper _mapper;
 
-
     public UserService(AcademiaXContext db, IMapper mapper)
     {
         _db = db;
