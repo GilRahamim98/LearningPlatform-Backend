@@ -1,5 +1,4 @@
-﻿using System.Runtime.ConstrainedExecution;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 
 namespace Talent;
@@ -15,6 +14,7 @@ public class UserService : IDisposable
         _mapper = mapper;
     }
 
+    // Registers a new user, hashes the password, assigns a role, and returns a JWT token
     public async Task<string> Register(RegisterUserDto createUserDto)
     {
         User user = _mapper.Map<User>(createUserDto);
@@ -26,25 +26,23 @@ public class UserService : IDisposable
         return JwtHelper.GetNewToken(user);
     }
 
+    // Authenticates a user by email and password, and returns a JWT token if successful
     public async Task<string?> Login(LoginUserDto loginDto)
     {
         loginDto.Email = loginDto.Email.ToLower();
         loginDto.Password = PasswordHasher.HashPassword(loginDto.Password);
-        User? user = await _db.Users.AsNoTracking().Include(u=>u.Role).SingleOrDefaultAsync(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
+        User? user = await _db.Users.AsNoTracking().Include(u => u.Role).SingleOrDefaultAsync(u => u.Email == loginDto.Email && u.Password == loginDto.Password);
         if (user == null) return null;
         return JwtHelper.GetNewToken(user);
     }
 
-    public bool IsStudentOrInstructor(int roleId)
-    {
-        return roleId == (int)RoleType.Student || roleId == (int)RoleType.Instructor;
-    }
-
+    // Checks if a user exists in the database by their ID
     public async Task<bool> UserExists(Guid id)
     {
         return await _db.Users.AsNoTracking().AnyAsync(u => u.Id == id);
     }
 
+    // Checks if an email is already registered in the database
     public async Task<bool> EmailExists(string email)
     {
         return await _db.Users.AsNoTracking().AnyAsync(u => u.Email == email);

@@ -79,101 +79,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Talent.CourseController",
-    "Method": "GetCourseEnrollments",
-    "RelativePath": "api/courses/enrollments-by-course/{courseId}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "courseId",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.LessonController",
-    "Method": "GetAllLessons",
-    "RelativePath": "api/lessons",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.LessonController",
-    "Method": "AddLesson",
-    "RelativePath": "api/lessons",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "createLessonDto",
-        "Type": "Talent.CreateLessonDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.LessonController",
-    "Method": "GetLessonById",
-    "RelativePath": "api/lessons/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.LessonController",
-    "Method": "UpdateLesson",
-    "RelativePath": "api/lessons/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      },
-      {
-        "Name": "createLessonDto",
-        "Type": "Talent.CreateLessonDto",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "Talent.LessonController",
-    "Method": "DeleteLesson",
-    "RelativePath": "api/lessons/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Guid",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "Talent.LessonController",
     "Method": "AddLessons",
     "RelativePath": "api/lessons/add-multiple",
@@ -239,15 +144,15 @@
   },
   {
     "ContainingType": "Talent.LessonController",
-    "Method": "GetProgressByLesson",
-    "RelativePath": "api/lessons/progress-by-lesson/{lessonId}",
-    "HttpMethod": "GET",
+    "Method": "UpdateLessons",
+    "RelativePath": "api/lessons/update-multiple",
+    "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "lessonId",
-        "Type": "System.Guid",
+        "Name": "lessons",
+        "Type": "System.Collections.Generic.List\u00601[[Talent.LessonDto, LearningPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "IsRequired": true
       }
     ],

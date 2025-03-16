@@ -5,16 +5,16 @@ public class MappingProfile : Profile
 {
     public MappingProfile()
     {
-        // Mapping between Course and CourseDto
+        // Mapping between Course, CourseDto and CreateCourseDto
         CreateMap<Course, CourseDto>();
         CreateMap<CreateCourseDto, Course>();
 
-        // Mapping between User and UserDto
+        // Mapping between User, UserDto and RegisterUserDto
         CreateMap<User, UserDto>();
         CreateMap<RegisterUserDto, User>();
 
-        // Mapping between Lesson and LessonDto
-        CreateMap<Lesson, LessonDto>();
+        // Mapping between Lesson and LessonDto with reverse mapping, and between Lesson to CreateLessonDto
+        CreateMap<Lesson, LessonDto>().ReverseMap();
         CreateMap<CreateLessonDto, Lesson>();
         CreateMap<Lesson,LessonPreviewDto>();
 

@@ -9,21 +9,18 @@ namespace Talent;
 public class CourseController : ControllerBase, IDisposable
 {
     private readonly CourseService _courseService;
-    private readonly EnrollmentService _enrollmentService;
-
     private IValidator<CreateCourseDto> _courseValidator;
 
     public CourseController(
         CourseService courseService,
-        EnrollmentService enrollmentService,
-         IValidator<CreateEnrollmentDto> enrollmentValidator,
          IValidator<CreateCourseDto> courseValidator)
     {
         _courseService = courseService;
-        _enrollmentService = enrollmentService;
         _courseValidator = courseValidator;
     }
 
+    // GET: api/courses
+    // Retrieves all courses
     [HttpGet]
     public async Task<IActionResult> GetAllCourses()
     {
@@ -31,6 +28,8 @@ public class CourseController : ControllerBase, IDisposable
         return Ok(courses);
     }
 
+    // GET: api/courses/{id}
+    // Retrieves a course by its ID
     [HttpGet("{id}")]
     public async Task<IActionResult> GetCourseById([FromRoute] Guid id)
     {
@@ -38,6 +37,9 @@ public class CourseController : ControllerBase, IDisposable
         if (course == null) return NotFound(new ResourceNotFound(id));
         return Ok(course);
     }
+
+    // POST: api/courses
+    // Adds a new course (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
     [HttpPost]
     public async Task<IActionResult> AddCourse([FromBody] CreateCourseDto createCourseDto)
@@ -52,6 +54,8 @@ public class CourseController : ControllerBase, IDisposable
         return Created("api/courses/" + dbCourse.Id, dbCourse);
     }
 
+    // PUT: api/courses/{id}
+    // Updates an existing course (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCourse([FromRoute] Guid id, [FromBody] CreateCourseDto createCourseDto)
@@ -67,6 +71,8 @@ public class CourseController : ControllerBase, IDisposable
         return Ok(updatedCourse);
     }
 
+    // DELETE: api/courses/{id}
+    // Deletes a course (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCourse([FromRoute] Guid id)
@@ -74,14 +80,6 @@ public class CourseController : ControllerBase, IDisposable
         bool deleted = await _courseService.DeleteCourse(id);
         if (!deleted) return NotFound(new ResourceNotFound(id));
         return NoContent();
-    }
-
-    [Authorize(Roles = "Admin,Instructor")]
-    [HttpGet("enrollments-by-course/{courseId}")]
-    public async Task<IActionResult> GetCourseEnrollments([FromRoute] Guid courseId)
-    {
-        List<UserDto> users = await _enrollmentService.GetCourseEnrollments(courseId);
-        return Ok(users);
     }
 
     public void Dispose()

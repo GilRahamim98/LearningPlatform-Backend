@@ -14,36 +14,26 @@ public class LessonController : ControllerBase, IDisposable
     private readonly CourseService _courseService;
 
     private IValidator<CreateLessonDto> _lessonValidator;
+    private IValidator<LessonDto> _lessonDtoValidator;
 
     public LessonController(
         LessonService lessonService,
         ProgressService progressService,
         CourseService courseService,
         EnrollmentService enrollmentService,
-        IValidator<CreateLessonDto> lessonValidator)
+        IValidator<CreateLessonDto> lessonValidator,
+        IValidator<LessonDto> lessonDtoValidator)
     {
         _lessonService = lessonService;
         _progressService = progressService;
         _courseService = courseService;
         _lessonValidator = lessonValidator;
+        _lessonDtoValidator = lessonDtoValidator;
     }
 
-
-    [HttpGet]
-    public async Task<IActionResult> GetAllLessons()
-    {
-        List<LessonDto> lessons = await _lessonService.GetAllLessons();
-        return Ok(lessons);
-    }
-
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetLessonById([FromRoute] Guid id)
-    {
-        LessonDto? lesson = await _lessonService.GetLessonById(id);
-        if (lesson == null) return NotFound(new ResourceNotFound(id));
-        return Ok(lesson);
-    }
-
+    // GET: api/lessons/course/{courseId}
+    // Retrieves all lessons for a specific course (only accessible by authorized users)
+    [Authorize]
     [HttpGet("course/{courseId}")]
     public async Task<IActionResult> GetLessonsByCourse([FromRoute] Guid courseId)
     {
@@ -51,7 +41,8 @@ public class LessonController : ControllerBase, IDisposable
         return Ok(lessons);
     }
 
-
+    // GET: api/lessons/course-preview/{courseId}
+    // Retrieves a preview of all lessons for a specific course
     [HttpGet("course-preview/{courseId}")]
     public async Task<IActionResult> GetLessonsPreviewByCourse([FromRoute] Guid courseId)
     {
@@ -59,22 +50,8 @@ public class LessonController : ControllerBase, IDisposable
         return Ok(lessons);
     }
 
-
-    [Authorize(Roles = "Admin,Instructor")]
-    [HttpPost]
-    public async Task<IActionResult> AddLesson([FromBody] CreateLessonDto createLessonDto)
-    {
-        ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-        if (!await _courseService.CourseExists(createLessonDto.CourseId)) errors.Add("Course not found");
-        if (errors.Any())
-        {
-            return BadRequest(new ValidationError<List<string>>(errors));
-        }
-        LessonDto dbLesson = await _lessonService.AddLesson(createLessonDto);
-        return Created("api/lessons/" + dbLesson.Id, dbLesson);
-    }
-
+    // POST: api/lessons/add-multiple
+    // Adds multiple new lessons (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
     [HttpPost("add-multiple")]
     public async Task<IActionResult> AddLessons([FromBody] List<CreateLessonDto> lessonsDto)
@@ -94,31 +71,32 @@ public class LessonController : ControllerBase, IDisposable
         return Created("api/lessons/list" , dbLessons);
     }
 
+    // PUT: api/lessons/update-multiple
+    // Updates multiple existing lessons (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
-    [HttpPut("{id}")]
-    public async Task<IActionResult> UpdateLesson([FromRoute] Guid id, [FromBody] CreateLessonDto createLessonDto)
+    [HttpPut("update-multiple")]
+    public async Task<IActionResult> UpdateLessons([FromBody] List<LessonDto> lessons)
     {
-        ValidationResult validationResult = _lessonValidator.Validate(createLessonDto);
-        List<string> errors = validationResult.Errors.Select(e => e.ErrorMessage).ToList();
-        if (!await _courseService.CourseExists(createLessonDto.CourseId)) errors.Add("Course not found");
+        if (lessons == null || !lessons.Any())
+            return BadRequest("No lessons provided");
+        List<string> errors = [];
+        foreach (LessonDto lesson in lessons)
+        {
+            ValidationResult validationResult = _lessonDtoValidator.Validate(lesson);
+            errors.AddRange(validationResult.Errors.Select(e => e.ErrorMessage).ToList());
+            if (!await _courseService.CourseExists(lesson.CourseId)) errors.Add("Course not found");
+        }
         if (errors.Any())
         {
             return BadRequest(new ValidationError<List<string>>(errors));
         }
-        LessonDto? dbLesson = await _lessonService.UpdateLesson(id, createLessonDto);
-        if (dbLesson == null) return NotFound(new ResourceNotFound(id));
-        return Ok(dbLesson);
+        List<LessonDto> dbLessons = await _lessonService.UpdateLessons(lessons);
+        if (!dbLessons.Any()) return NotFound(new ResourceNotFound("None of the specified lessons were found"));
+        return Ok(dbLessons);
     }
 
-    [Authorize(Roles = "Admin,Instructor")]
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteLesson([FromRoute] Guid id)
-    {
-        bool deleted = await _lessonService.DeleteLesson(id);
-        if (!deleted) return NotFound(new ResourceNotFound(id));
-        return NoContent();
-    }
-
+    // DELETE: api/lessons/delete-multiple
+    // Deletes multiple lessons (only accessible by Admin and Instructor roles)
     [Authorize(Roles = "Admin,Instructor")]
     [HttpDelete("delete-multiple")]
     public async Task<IActionResult> DeleteLessons([FromBody] List<Guid> ids)
@@ -129,17 +107,6 @@ public class LessonController : ControllerBase, IDisposable
         if (!deleted) return NotFound(new ResourceNotFound("Some lessons could not be found"));
         return NoContent();
     }
-
-    [Authorize(Roles = "Admin,Instructor")]
-    [HttpGet("progress-by-lesson/{lessonId}")]
-    public async Task<IActionResult> GetProgressByLesson([FromRoute] Guid lessonId)
-    {
-        List<ProgressDto> progresses = await _progressService.GetProgressByLesson(lessonId);
-        return Ok(progresses);
-    }
-
-
-
 
 
 

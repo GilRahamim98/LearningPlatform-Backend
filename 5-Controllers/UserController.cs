@@ -39,6 +39,8 @@ public class UserController : ControllerBase, IDisposable
         _progressValidator = progressValidator;
     }
 
+    // POST: api/users/register
+    // Registers a new user and returns a JWT token
     [HttpPost("register")]
     public async Task<IActionResult> Register([FromBody] RegisterUserDto createUserDto)
     {
@@ -54,6 +56,8 @@ public class UserController : ControllerBase, IDisposable
         return Created("", token);
     }
 
+    // POST: api/users/login
+    // Authenticates a user and returns a JWT token
     [HttpPost("login")]
     public async Task<IActionResult> Login([FromBody] LoginUserDto loginDto)
     {
@@ -69,6 +73,8 @@ public class UserController : ControllerBase, IDisposable
         return Ok(token);
     }
 
+    // POST: api/users/enroll-to-course
+    // Enrolls a user in a course (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpPost("enroll-to-course")]
     public async Task<IActionResult> EnrollUser([FromBody] CreateEnrollmentDto createEnrollmentDto)
@@ -90,6 +96,8 @@ public class UserController : ControllerBase, IDisposable
         return Created("/api/users/enroll-to-course", newEnrollment);
     }
 
+    // GET: api/users/enrollments/{userId}
+    // Retrieves all enrollments for a specific user (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpGet("enrollments/{userId}")]
     public async Task<IActionResult> GetUserEnrollments([FromRoute] Guid userId)
@@ -98,6 +106,8 @@ public class UserController : ControllerBase, IDisposable
         return Ok(enrollments);
     }
 
+    // DELETE: api/users/unenroll/{enrollmentId}
+    // Unenrolls a user from a course (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpDelete("unenroll/{enrollmentId}")]
     public async Task<IActionResult> UnenrollUser([FromRoute] Guid enrollmentId)
@@ -107,6 +117,8 @@ public class UserController : ControllerBase, IDisposable
         return NoContent();
     }
 
+    // GET: api/users/progress-by-user/{userId}
+    // Retrieves progress records for a specific user (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpGet("progress-by-user/{userId}")]
     public async Task<IActionResult> GetProgressByUser([FromRoute] Guid userId)
@@ -115,6 +127,8 @@ public class UserController : ControllerBase, IDisposable
         return Ok(progresses);
     }
 
+    // POST: api/users/progresses
+    // Adds a new progress record (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpPost("progresses")]
     public async Task<IActionResult> AddProgress([FromBody] CreateProgressDto createProgressDto)
@@ -130,6 +144,8 @@ public class UserController : ControllerBase, IDisposable
         return Created("api/progresses/" + dbProgress.Id, dbProgress);
     }
 
+    // PUT: api/users/progresses/{id}
+    // Updates an existing progress record (only accessible by Admin and Student roles)
     [Authorize(Roles = "Admin,Student")]
     [HttpPut("progresses/{id}")]
     public async Task<IActionResult> UpdateProgress([FromRoute] Guid id, [FromBody] CreateProgressDto createProgressDto)

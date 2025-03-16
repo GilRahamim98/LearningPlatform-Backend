@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+
 namespace Talent;
 
 public class ProgressValidator : AbstractValidator<CreateProgressDto>

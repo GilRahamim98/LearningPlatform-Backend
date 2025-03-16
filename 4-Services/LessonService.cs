@@ -14,38 +14,21 @@ public class LessonService : IDisposable
         _mapper = mapper;
     }
 
-    public async Task<List<LessonDto>> GetAllLessons()
-    {
-        List<Lesson> lessons = await _db.Lessons.AsNoTracking().ToListAsync();
-        return _mapper.Map<List<LessonDto>>(lessons);
-    }
-
-    public async Task<LessonDto?> GetLessonById(Guid id)
-    {
-        Lesson? lesson = await _db.Lessons.AsNoTracking().SingleOrDefaultAsync(l => l.Id == id);
-        return _mapper.Map<LessonDto?>(lesson);
-    }
-
+    // Retrieves all lessons for a specific course and maps them to LessonDto
     public async Task<List<LessonDto>> GetLessonsByCourseId(Guid courseId)
     {
         List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
         return _mapper.Map<List<LessonDto>>(lessons);
     }
 
+    // Retrieves a preview of all lessons for a specific course and maps them to LessonPreviewDto
     public async Task<List<LessonPreviewDto>> GetLessonsPreviewByCourse(Guid courseId)
     {
         List<Lesson> lessons = await _db.Lessons.AsNoTracking().Where(l => l.CourseId == courseId).ToListAsync();
         return _mapper.Map<List<LessonPreviewDto>>(lessons);
     }
 
-    public async Task<LessonDto> AddLesson(CreateLessonDto createLessonDto)
-    {
-        Lesson lesson = _mapper.Map<Lesson>(createLessonDto);
-        await _db.Lessons.AddAsync(lesson);
-        await _db.SaveChangesAsync();
-        return _mapper.Map<LessonDto>(lesson);
-    }
-
+    // Adds a list of new lessons to the database and maps them to LessonDto
     public async Task<List<LessonDto>> AddLessons(List<CreateLessonDto> lessonsDto)
     {
         List<Lesson> lessons = _mapper.Map<List<Lesson>>(lessonsDto);
@@ -54,24 +37,20 @@ public class LessonService : IDisposable
         return _mapper.Map<List<LessonDto>>(lessons);
     }
 
-    public async Task<LessonDto?> UpdateLesson(Guid id, CreateLessonDto createLessonDto)
+    // Updates a list of existing lessons in the database and maps them to LessonDto
+    public async Task<List<LessonDto>> UpdateLessons(List<LessonDto> lessonsDto)
     {
-        Lesson? dbLesson = await _db.Lessons.FindAsync(id);
-        if (dbLesson == null) return null;
-        _mapper.Map(createLessonDto, dbLesson);
+        List<Lesson> updatedLessons = _mapper.Map<List<Lesson>>(lessonsDto);
+        foreach(Lesson lesson in updatedLessons)
+        {
+            _db.Lessons.Attach(lesson);
+            _db.Entry(lesson).State = EntityState.Modified;
+        }
         await _db.SaveChangesAsync();
-        return _mapper.Map<LessonDto>(dbLesson);
+        return _mapper.Map<List<LessonDto>>(updatedLessons);
     }
 
-    public async Task<bool> DeleteLesson(Guid id)
-    {
-        Lesson? dbLesson = await _db.Lessons.FindAsync(id);
-        if (dbLesson == null) return false;
-        _db.Lessons.Remove(dbLesson);
-        await _db.SaveChangesAsync();
-        return true;
-    }
-
+    // Deletes a list of lessons from the database by their IDs
     public async Task<bool> DeleteLessons(List<Guid> ids)
     {
         List<Lesson> lessonsToDelete = await _db.Lessons.Where(lesson => ids.Contains(lesson.Id)).ToListAsync();
@@ -81,12 +60,11 @@ public class LessonService : IDisposable
         return true;
     }
 
+    // Checks if a lesson exists in the database by its ID
     public async Task<bool> LessonExists(Guid id)
     {
-        return await _db.Lessons.AnyAsync(l=> l.Id == id);
+        return await _db.Lessons.AnyAsync(l => l.Id == id);
     }
-
-
 
     public void Dispose()
     {

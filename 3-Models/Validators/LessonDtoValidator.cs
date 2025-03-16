@@ -2,10 +2,13 @@
 
 namespace Talent;
 
-public class LessonValidator : AbstractValidator<CreateLessonDto>
+public class LessonDtoValidator :AbstractValidator<LessonDto>
 {
-    public LessonValidator()
+    public LessonDtoValidator()
     {
+        RuleFor(lesson => lesson.Id)
+            .NotEmpty().WithMessage("Lesson ID is required");
+
         RuleFor(lesson => lesson.Title)
             .NotEmpty().WithMessage("Title is required")
             .MinimumLength(2).WithMessage("Title should be at least 2 chars.")
