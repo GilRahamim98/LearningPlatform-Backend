@@ -21,25 +21,40 @@ public class AcademiaXContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<User>()
+            .HasOne(u => u.Role)
+            .WithMany(r => r.Users)
+            .HasForeignKey(u => u.RoleId)
+            .OnDelete(DeleteBehavior.Restrict);
 
         modelBuilder.Entity<Enrollment>()
             .HasOne(e => e.User)
-            .WithMany() 
-            .OnDelete(DeleteBehavior.Cascade); 
+            .WithMany(u => u.Enrollments)
+            .HasForeignKey(e => e.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Enrollment>()
             .HasOne(e => e.Course)
-            .WithMany() 
-            .OnDelete(DeleteBehavior.Cascade); 
+            .WithMany(c => c.Enrollments)
+            .HasForeignKey(e => e.CourseId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Progress>()
             .HasOne(p => p.User)
-            .WithMany() 
-            .OnDelete(DeleteBehavior.Cascade); 
+            .WithMany(u => u.Progresses)
+            .HasForeignKey(p => p.UserId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Progress>()
             .HasOne(p => p.Lesson)
-            .WithMany() 
+            .WithMany(l => l.Progresses)
+            .HasForeignKey(p => p.LessonId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        modelBuilder.Entity<Lesson>()
+            .HasOne(l => l.Course)
+            .WithMany(c => c.Lessons)
+            .HasForeignKey(l => l.CourseId)
             .OnDelete(DeleteBehavior.Cascade);
 
         List<Role> roles = new List<Role>

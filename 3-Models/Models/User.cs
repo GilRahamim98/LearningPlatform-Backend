@@ -21,4 +21,10 @@ public class User
     [InverseProperty("Users")]
     public Role? Role { get; set; }
 
+    [InverseProperty("User")]
+    public ICollection<Enrollment> Enrollments { get; } = new List<Enrollment>();
+
+    [InverseProperty("User")]
+    public ICollection<Progress> Progresses { get; } = new List<Progress>();
+
 }

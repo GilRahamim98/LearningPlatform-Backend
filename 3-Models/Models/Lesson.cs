@@ -20,4 +20,7 @@ public class Lesson
     [Url(ErrorMessage = "Invalid video URL format")]
     public string VideoUrl { get; set; } = null!;
 
+    [InverseProperty("Lesson")]
+    public ICollection<Progress> Progresses { get; } = new List<Progress>();
+
 }

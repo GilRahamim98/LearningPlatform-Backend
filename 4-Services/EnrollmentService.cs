@@ -40,7 +40,7 @@ public class EnrollmentService : IDisposable
     // Unenrolls a user from a course and removes related progress records
     public async Task<bool> UnenrollUserFromCourse(Guid enrollmentId)
     {
-        await using IDbContextTransaction trabsaction = _db.Database.BeginTransaction();
+        await using IDbContextTransaction transaction = _db.Database.BeginTransaction();
 
         try
         {
@@ -51,12 +51,12 @@ public class EnrollmentService : IDisposable
             _db.Progresses.RemoveRange(progresses);
             _db.Enrollments.Remove(enrollment);
             await _db.SaveChangesAsync();
-            await trabsaction.CommitAsync();
+            await transaction.CommitAsync();
             return true;
         }
         catch (Exception ex)
         {
-            await trabsaction.RollbackAsync();
+            await transaction.RollbackAsync();
             Log.Error(ex.Message);
             return false;
 

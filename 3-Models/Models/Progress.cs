@@ -14,7 +14,6 @@ public class Progress
     [ForeignKey("UserId")]
     public User User { get; set; } = null!;
 
-
     [Required(ErrorMessage = "Missing LessonId")]
     public Guid LessonId { get; set; }
 
